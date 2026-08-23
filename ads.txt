@@ -1,0 +1,2 @@
+# Add authorized seller entries supplied by your ad network here.
+# Do not copy an ads.txt line unless the network has provided it to you.
