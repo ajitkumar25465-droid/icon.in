@@ -1,18 +1,21 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>OXINOB — Gaming News, Guides & Reviews</title>
+<title>OXINOB — Premium Gaming News, Guides & Reviews</title>
 
-<meta name="description"
-content="OXINOB is a premium gaming blog featuring gaming news, guides, reviews, tips and useful gaming content.">
-
-<meta name="theme-color" content="#080a0f">
+<meta name="description" content="OXINOB Gaming — premium gaming news, guides, reviews, tips and original gaming content.">
+<meta name="theme-color" content="#07090d">
 
 <style>
+
+/* =========================================================
+   OXINOB PREMIUM GAMING PORTAL
+   Single-file version
+   ========================================================= */
+
 *{
   margin:0;
   padding:0;
@@ -20,16 +23,26 @@ content="OXINOB is a premium gaming blog featuring gaming news, guides, reviews,
 }
 
 :root{
-  --bg:#080a0f;
-  --surface:#0e1118;
-  --surface2:#141923;
-  --border:#202633;
-  --text:#f4f6fa;
+  --bg:#07090d;
+  --bg-soft:#0b0f16;
+  --surface:#10151e;
+  --surface-2:#151b25;
+  --surface-3:#1a212d;
+  --border:rgba(255,255,255,.085);
+
+  --text:#f7f8fb;
   --muted:#929baa;
-  --accent:#7c5cff;
-  --accent2:#20d9ff;
-  --green:#46d483;
-  --max:1240px;
+  --muted-2:#667080;
+
+  --purple:#765cff;
+  --blue:#3b82f6;
+  --cyan:#16d9ff;
+  --green:#48d597;
+
+  --radius:16px;
+  --max:1280px;
+
+  --shadow:0 25px 80px rgba(0,0,0,.35);
 }
 
 html{
@@ -38,11 +51,39 @@ html{
 
 body{
   background:
-    radial-gradient(circle at 80% 0%,rgba(124,92,255,.12),transparent 28%),
+    radial-gradient(circle at 80% -10%,rgba(118,92,255,.16),transparent 30%),
+    radial-gradient(circle at 10% 20%,rgba(22,217,255,.06),transparent 25%),
     var(--bg);
+
   color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
   line-height:1.6;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.025;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+
+  background-size:60px 60px;
+
+  mask-image:linear-gradient(to bottom,#000,transparent 70%);
 }
 
 a{
@@ -50,9 +91,9 @@ a{
   text-decoration:none;
 }
 
-img{
-  max-width:100%;
-  display:block;
+button,
+input{
+  font:inherit;
 }
 
 .container{
@@ -60,558 +101,1275 @@ img{
   margin:auto;
 }
 
-/* ================= HEADER ================= */
+/* =========================================================
+   TOP BAR
+   ========================================================= */
 
-.topbar{
+.top-strip{
+  min-height:32px;
+
   border-bottom:1px solid var(--border);
-  background:#080a0f;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(118,92,255,.08),
+      rgba(22,217,255,.03),
+      transparent
+    );
+
   color:var(--muted);
-  font-size:12px;
+
+  font-size:10px;
+  letter-spacing:.3px;
 }
 
-.topbar-inner{
-  min-height:34px;
+.top-strip-inner{
+  min-height:32px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
+  gap:20px;
 }
 
-.main-header{
+.live{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.live-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 12px var(--green);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header{
   position:sticky;
   top:0;
-  z-index:999;
-  background:rgba(8,10,15,.94);
-  backdrop-filter:blur(18px);
+  z-index:1000;
+
+  background:rgba(7,9,13,.88);
+
+  backdrop-filter:blur(22px);
+
   border-bottom:1px solid var(--border);
 }
 
 .nav{
-  min-height:76px;
+  min-height:78px;
+
   display:flex;
   align-items:center;
-  gap:35px;
+
+  gap:32px;
 }
 
 .logo{
   font-size:27px;
-  font-weight:900;
-  letter-spacing:-1px;
+  font-weight:950;
+  letter-spacing:-1.5px;
+  white-space:nowrap;
 }
 
 .logo span{
-  color:var(--accent2);
+  color:var(--cyan);
 }
 
-.menu{
+.main-menu{
   display:flex;
   align-items:center;
-  gap:24px;
+  gap:23px;
+
   flex:1;
 }
 
-.menu a{
-  color:#b8bfcc;
-  font-size:13px;
-  font-weight:700;
+.main-menu a{
+  color:#aeb6c5;
+
+  font-size:12px;
+  font-weight:750;
+
   transition:.2s;
 }
 
-.menu a:hover{
-  color:#fff;
+.main-menu a:hover{
+  color:white;
 }
 
-.nav-actions{
+.nav-tools{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:9px;
 }
 
-.search-btn,
-.menu-btn{
+.icon-btn{
+  width:38px;
+  height:38px;
+
+  border-radius:10px;
+
   border:1px solid var(--border);
-  background:var(--surface);
+
+  background:rgba(255,255,255,.035);
+
   color:white;
-  width:39px;
-  height:39px;
-  border-radius:9px;
+
   cursor:pointer;
+
+  display:grid;
+  place-items:center;
+
+  transition:.2s;
 }
 
-.subscribe-btn{
-  background:var(--accent);
+.icon-btn:hover{
+  background:rgba(255,255,255,.08);
+}
+
+.nav-cta{
   border:0;
+
   color:white;
-  padding:10px 16px;
-  border-radius:9px;
-  font-size:12px;
-  font-weight:800;
+
+  padding:10px 15px;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      var(--blue)
+    );
+
+  font-size:11px;
+  font-weight:850;
+
   cursor:pointer;
+
+  box-shadow:
+    0 10px 30px rgba(118,92,255,.22);
 }
 
-.menu-btn{
+.mobile-menu{
   display:none;
 }
 
-/* ================= CATEGORY BAR ================= */
+/* =========================================================
+   CATEGORY NAV
+   ========================================================= */
 
-.category-bar{
+.category-nav{
   border-bottom:1px solid var(--border);
-  background:#0b0e14;
+
+  background:
+    rgba(11,14,20,.92);
 }
 
-.categories{
+.category-scroll{
+  min-height:46px;
+
   display:flex;
   align-items:center;
-  gap:22px;
+
+  gap:24px;
+
   overflow-x:auto;
+
   scrollbar-width:none;
-  min-height:45px;
 }
 
-.categories::-webkit-scrollbar{
+.category-scroll::-webkit-scrollbar{
   display:none;
 }
 
-.categories a{
+.category-scroll a{
+  color:#7e8898;
+
+  font-size:11px;
+  font-weight:750;
+
   white-space:nowrap;
-  color:#858e9e;
-  font-size:12px;
-  font-weight:700;
+
+  transition:.2s;
 }
 
-.categories a:hover{
-  color:#fff;
+.category-scroll a:hover{
+  color:white;
 }
 
-/* ================= AD ================= */
+/* =========================================================
+   AD SYSTEM
+   ========================================================= */
 
-.ad{
-  min-height:90px;
-  margin:22px 0;
-  border:1px dashed #29303d;
-  border-radius:9px;
+.ad-slot{
+  position:relative;
+
+  min-height:92px;
+
+  margin:20px 0;
+
+  border:1px dashed rgba(255,255,255,.13);
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.018),
+      rgba(255,255,255,.005)
+    );
+
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#586272;
-  font-size:10px;
-  letter-spacing:1px;
-  background:rgba(255,255,255,.01);
+
+  color:#566174;
+
+  font-size:9px;
+  letter-spacing:1.4px;
+
+  overflow:hidden;
 }
 
-.ad-square{
-  min-height:280px;
+.ad-slot::before{
+  content:"AD SPACE";
+
+  opacity:.75;
 }
 
-/* ================= HERO ================= */
+.ad-label{
+  position:absolute;
+
+  top:6px;
+  right:9px;
+
+  color:#3f4959;
+
+  font-size:7px;
+
+  letter-spacing:.7px;
+}
+
+.ad-tall{
+  min-height:310px;
+}
+
+.ad-large{
+  min-height:180px;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .hero{
-  padding:42px 0 25px;
+  padding:38px 0 25px;
 }
 
-.hero-grid{
+.hero-layout{
   display:grid;
-  grid-template-columns:1.65fr .8fr;
-  gap:22px;
+
+  grid-template-columns:
+    minmax(0,1.55fr)
+    minmax(260px,.65fr);
+
+  gap:20px;
 }
 
 .hero-main{
-  min-height:430px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
+  min-height:500px;
+
   position:relative;
+
+  overflow:hidden;
+
+  border-radius:var(--radius);
+
+  border:1px solid var(--border);
+
   display:flex;
   align-items:flex-end;
+
   background:
-    linear-gradient(to top,rgba(4,6,10,.98),rgba(4,6,10,.08)),
-    radial-gradient(circle at 65% 30%,#51469a,#182238 45%,#0d121c);
+
+    linear-gradient(
+      to top,
+      rgba(4,6,10,.98) 0%,
+      rgba(4,6,10,.75) 35%,
+      rgba(4,6,10,.15) 100%
+    ),
+
+    radial-gradient(
+      circle at 70% 28%,
+      #5147a0 0%,
+      #273354 30%,
+      #111827 60%,
+      #0b1018 100%
+    );
+
+  box-shadow:var(--shadow);
+}
+
+.hero-main::before{
+  content:"";
+
+  position:absolute;
+
+  width:420px;
+  height:420px;
+
+  right:-100px;
+  top:-100px;
+
+  border-radius:50%;
+
+  background:var(--cyan);
+
+  filter:blur(140px);
+
+  opacity:.12;
 }
 
 .hero-main::after{
   content:"";
+
   position:absolute;
   inset:0;
+
   background:
-    linear-gradient(120deg,transparent 30%,rgba(32,217,255,.08),transparent 65%);
+    linear-gradient(
+      120deg,
+      transparent 25%,
+      rgba(255,255,255,.035) 45%,
+      transparent 65%
+    );
+
+  transform:translateX(-100%);
+
+  animation:heroShine 8s infinite;
+
   pointer-events:none;
+}
+
+@keyframes heroShine{
+
+  0%,55%{
+    transform:translateX(-100%);
+  }
+
+  75%,100%{
+    transform:translateX(100%);
+  }
+
 }
 
 .hero-content{
   position:relative;
-  z-index:2;
-  padding:34px;
-  max-width:780px;
+
+  z-index:3;
+
+  padding:38px;
+
+  max-width:800px;
 }
 
-.label{
-  color:var(--accent2);
-  font-size:10px;
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+
+  color:var(--cyan);
+
+  font-size:9px;
   font-weight:900;
+
+  letter-spacing:1.5px;
+
   text-transform:uppercase;
-  letter-spacing:1.3px;
 }
 
-.hero h1{
-  font-size:clamp(36px,5vw,66px);
-  line-height:1.02;
-  letter-spacing:-2px;
-  margin:10px 0 15px;
+.hero-title{
+  font-size:
+    clamp(
+      42px,
+      6vw,
+      78px
+    );
+
+  line-height:.97;
+
+  letter-spacing:-4px;
+
+  margin:12px 0 18px;
 }
 
-.hero p{
-  color:#b2bac8;
+.gradient-text{
+  background:
+    linear-gradient(
+      90deg,
+      #fff,
+      #9e91ff,
+      #54a5ff,
+      #22d9ff
+    );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  color:transparent;
+}
+
+.hero-description{
+  color:#b1bac8;
+
   max-width:650px;
+
   font-size:14px;
 }
 
-.meta{
+.hero-meta{
   display:flex;
-  gap:15px;
-  color:#7e8898;
-  font-size:10px;
+
+  flex-wrap:wrap;
+
+  gap:14px;
+
   margin-top:18px;
+
+  color:#687487;
+
+  font-size:9px;
+
+  font-weight:700;
 }
 
-.read{
-  display:inline-block;
-  margin-top:22px;
-  padding:11px 17px;
-  border-radius:8px;
-  background:#fff;
+.hero-buttons{
+  display:flex;
+
+  gap:10px;
+
+  flex-wrap:wrap;
+
+  margin-top:24px;
+}
+
+.primary-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:12px 18px;
+
+  border-radius:9px;
+
+  background:white;
+
   color:#080a0f;
-  font-size:12px;
+
+  font-size:11px;
+  font-weight:900;
+
+  transition:.25s;
+}
+
+.primary-btn:hover{
+  transform:translateY(-2px);
+}
+
+.secondary-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:11px 17px;
+
+  border-radius:9px;
+
+  border:1px solid rgba(255,255,255,.13);
+
+  background:rgba(255,255,255,.045);
+
+  color:white;
+
+  font-size:11px;
   font-weight:800;
 }
+
+/* =========================================================
+   HERO SIDE
+   ========================================================= */
 
 .hero-side{
   display:flex;
   flex-direction:column;
-  gap:15px;
+
+  gap:14px;
 }
 
-.side-card{
+.side-story{
   flex:1;
-  border:1px solid var(--border);
-  border-radius:11px;
+
   padding:22px;
-  background:var(--surface);
-}
 
-.side-card .number{
-  color:#596375;
-  font-size:12px;
-  font-weight:900;
-}
-
-.side-card h3{
-  font-size:18px;
-  line-height:1.3;
-  margin:7px 0;
-}
-
-.side-card p{
-  color:var(--muted);
-  font-size:11px;
-}
-
-/* ================= CONTENT ================= */
-
-.section{
-  padding:40px 0;
-}
-
-.section-heading{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  margin-bottom:20px;
-}
-
-.section-heading h2{
-  font-size:26px;
-  letter-spacing:-.7px;
-}
-
-.section-heading p{
-  color:var(--muted);
-  font-size:12px;
-}
-
-.view-all{
-  color:var(--accent2);
-  font-size:11px;
-  font-weight:800;
-}
-
-.content{
-  display:grid;
-  grid-template-columns:1fr 300px;
-  gap:25px;
-}
-
-/* ================= ARTICLES ================= */
-
-.articles{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-
-.article{
   border:1px solid var(--border);
-  border-radius:11px;
-  overflow:hidden;
-  background:var(--surface);
+
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(118,92,255,.10),
+      transparent
+    ),
+    var(--surface);
+
   transition:.25s;
 }
 
-.article:hover{
-  transform:translateY(-4px);
-  border-color:#30394b;
+.side-story:hover{
+  transform:translateY(-3px);
+
+  border-color:
+    rgba(118,92,255,.35);
+}
+
+.story-number{
+  color:#4e596b;
+
+  font-size:10px;
+  font-weight:900;
+}
+
+.story-category{
+  color:var(--cyan);
+
+  font-size:8px;
+  font-weight:900;
+
+  letter-spacing:1px;
+
+  text-transform:uppercase;
+
+  margin-top:8px;
+}
+
+.side-story h3{
+  font-size:17px;
+
+  line-height:1.3;
+
+  margin:7px 0;
+}
+
+.side-story p{
+  color:var(--muted);
+
+  font-size:11px;
+}
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.section{
+  padding:45px 0;
+}
+
+.section-header{
+  display:flex;
+
+  align-items:flex-end;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  margin-bottom:20px;
+}
+
+.section-kicker{
+  color:var(--cyan);
+
+  font-size:9px;
+  font-weight:900;
+
+  text-transform:uppercase;
+
+  letter-spacing:1.4px;
+}
+
+.section-title{
+  font-size:28px;
+
+  letter-spacing:-1px;
+
+  margin-top:3px;
+}
+
+.section-subtitle{
+  color:var(--muted);
+
+  font-size:11px;
+
+  margin-top:4px;
+}
+
+.view-all{
+  color:var(--cyan);
+
+  font-size:10px;
+
+  font-weight:900;
+
+  white-space:nowrap;
+}
+
+/* =========================================================
+   MAIN CONTENT + SIDEBAR
+   ========================================================= */
+
+.main-layout{
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    300px;
+
+  gap:25px;
+}
+
+/* =========================================================
+   ARTICLE GRID
+   ========================================================= */
+
+.article-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:18px;
+}
+
+.article-card{
+  overflow:hidden;
+
+  border-radius:13px;
+
+  border:1px solid var(--border);
+
+  background:var(--surface);
+
+  transition:.3s;
+}
+
+.article-card:hover{
+  transform:translateY(-5px);
+
+  border-color:
+    rgba(118,92,255,.38);
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.25);
 }
 
 .article-image{
   height:190px;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
-  font-size:48px;
+
+  position:relative;
+
+  font-size:50px;
+
   background:
-    linear-gradient(135deg,rgba(124,92,255,.35),rgba(32,217,255,.05)),
-    #131925;
+    linear-gradient(
+      135deg,
+      rgba(118,92,255,.38),
+      rgba(22,217,255,.06)
+    ),
+    #131a26;
+}
+
+.article-image::after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      135deg,
+      transparent,
+      rgba(255,255,255,.06),
+      transparent
+    );
 }
 
 .article-body{
   padding:19px;
 }
 
-.article-category{
-  color:var(--accent2);
-  font-size:9px;
+.article-tag{
+  color:var(--cyan);
+
+  font-size:8px;
+
   font-weight:900;
-  text-transform:uppercase;
+
   letter-spacing:1px;
+
+  text-transform:uppercase;
 }
 
-.article h3{
+.article-title{
   font-size:18px;
+
   line-height:1.35;
+
   margin:7px 0;
 }
 
-.article p{
+.article-excerpt{
   color:var(--muted);
+
   font-size:12px;
 }
 
-.article-meta{
-  color:#646e7f;
-  font-size:9px;
-  margin-top:14px;
+.article-info{
+  display:flex;
+
+  gap:12px;
+
+  margin-top:15px;
+
+  color:#5f6a7b;
+
+  font-size:8px;
+
+  font-weight:800;
 }
 
-/* ================= SIDEBAR ================= */
+/* =========================================================
+   NATIVE AD CARD
+   ========================================================= */
+
+.native-ad{
+  border:1px solid var(--border);
+
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(118,92,255,.045),
+      rgba(22,217,255,.02)
+    );
+
+  min-height:190px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  color:#515c6e;
+
+  font-size:9px;
+
+  letter-spacing:1px;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar{
+  min-width:0;
+}
 
 .sidebar-box{
   border:1px solid var(--border);
-  border-radius:11px;
+
+  border-radius:13px;
+
   background:var(--surface);
-  margin-bottom:18px;
+
   overflow:hidden;
+
+  margin-bottom:18px;
 }
 
-.sidebar-title{
+.sidebar-heading{
   padding:15px 17px;
+
   border-bottom:1px solid var(--border);
-  font-size:12px;
+
+  font-size:10px;
+
   font-weight:900;
+
   text-transform:uppercase;
-  letter-spacing:.7px;
+
+  letter-spacing:1px;
 }
 
-.popular{
+.popular-item{
   display:flex;
+
   gap:12px;
+
   padding:14px 16px;
+
   border-bottom:1px solid var(--border);
 }
 
-.popular:last-child{
+.popular-item:last-child{
   border-bottom:0;
 }
 
 .popular-number{
-  color:#4d586b;
-  font-size:17px;
-  font-weight:900;
+  color:#4d5768;
+
+  font-size:18px;
+
+  font-weight:950;
 }
 
-.popular h4{
-  font-size:12px;
-  line-height:1.35;
+.popular-title{
+  font-size:11px;
+
+  font-weight:800;
+
+  line-height:1.4;
 }
 
-.popular span{
-  color:#657083;
-  font-size:9px;
+.popular-meta{
+  color:#596476;
+
+  font-size:8px;
+
+  margin-top:3px;
 }
 
-/* ================= TRENDING ================= */
+/* =========================================================
+   TRENDING
+   ========================================================= */
 
-.trending{
+.trending-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
   gap:15px;
 }
 
-.trend{
+.trending-card{
+  min-height:150px;
+
+  padding:20px;
+
   border:1px solid var(--border);
+
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(118,92,255,.08),
+      transparent
+    ),
+    var(--surface);
+
+  transition:.25s;
+}
+
+.trending-card:hover{
+  transform:translateY(-4px);
+}
+
+.trending-label{
+  color:var(--cyan);
+
+  font-size:8px;
+
+  font-weight:900;
+
+  letter-spacing:1px;
+}
+
+.trending-card h3{
+  font-size:16px;
+
+  line-height:1.35;
+
+  margin-top:9px;
+}
+
+/* =========================================================
+   BIG FEATURE
+   ========================================================= */
+
+.big-feature{
+  display:grid;
+
+  grid-template-columns:
+    1.25fr
+    .75fr;
+
+  min-height:310px;
+
+  border:1px solid var(--border);
+
+  border-radius:16px;
+
+  overflow:hidden;
+
   background:var(--surface);
-  border-radius:10px;
-  padding:18px;
 }
 
-.trend strong{
-  display:block;
-  color:var(--accent2);
-  font-size:10px;
-  margin-bottom:7px;
+.big-feature-visual{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(118,92,255,.5),
+      rgba(22,217,255,.05)
+    ),
+    #121a28;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:70px;
 }
 
-.trend h3{
-  font-size:15px;
+.big-feature-content{
+  padding:30px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
 }
 
-/* ================= NEWSLETTER ================= */
+.big-feature-content h2{
+  font-size:32px;
+
+  line-height:1.1;
+
+  margin:8px 0 12px;
+}
+
+.big-feature-content p{
+  color:var(--muted);
+
+  font-size:12px;
+}
+
+/* =========================================================
+   NEWSLETTER
+   ========================================================= */
 
 .newsletter{
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:45px 25px;
+  padding:52px 25px;
+
   text-align:center;
+
+  border:1px solid var(--border);
+
+  border-radius:16px;
+
   background:
-    radial-gradient(circle at 50% 0%,rgba(124,92,255,.16),transparent 55%),
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(118,92,255,.18),
+      transparent 58%
+    ),
     var(--surface);
 }
 
 .newsletter h2{
-  font-size:30px;
+  font-size:32px;
+
+  letter-spacing:-1px;
 }
 
 .newsletter p{
-  color:var(--muted);
-  font-size:13px;
-  margin:6px auto 20px;
   max-width:550px;
+
+  margin:7px auto 22px;
+
+  color:var(--muted);
+
+  font-size:12px;
 }
 
-.form{
-  display:flex;
-  gap:9px;
-  max-width:480px;
+.newsletter-form{
+  max-width:490px;
+
   margin:auto;
+
+  display:flex;
+
+  gap:8px;
 }
 
-.form input{
+.newsletter-form input{
   flex:1;
+
   min-width:0;
-  background:#080b11;
-  color:white;
+
+  padding:12px 13px;
+
+  border-radius:9px;
+
   border:1px solid var(--border);
-  border-radius:8px;
-  padding:12px;
+
+  background:#080b10;
+
+  color:white;
+
   outline:none;
+
+  font-size:12px;
 }
 
-.form button{
+.newsletter-form button{
   border:0;
-  border-radius:8px;
-  padding:0 17px;
-  background:var(--accent);
-  color:#fff;
-  font-weight:800;
+
+  padding:0 18px;
+
+  border-radius:9px;
+
+  background:var(--purple);
+
+  color:white;
+
+  font-size:11px;
+
+  font-weight:900;
+
   cursor:pointer;
 }
 
-/* ================= FOOTER ================= */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
-footer{
-  margin-top:40px;
+.footer{
+  margin-top:35px;
+
+  padding:48px 0 22px;
+
   border-top:1px solid var(--border);
-  padding:45px 0 20px;
+
+  background:#06080c;
 }
 
 .footer-grid{
   display:grid;
-  grid-template-columns:1.6fr 1fr 1fr 1fr;
-  gap:30px;
+
+  grid-template-columns:
+    1.6fr
+    1fr
+    1fr
+    1fr;
+
+  gap:35px;
+
   margin-bottom:35px;
 }
 
-.footer-grid h4{
-  font-size:12px;
-  margin-bottom:12px;
-}
+.footer-title{
+  color:white;
 
-.footer-grid p,
-.footer-grid a{
-  color:var(--muted);
   font-size:11px;
+
+  font-weight:900;
+
+  margin-bottom:13px;
 }
 
-.footer-grid a{
-  display:block;
-  margin:7px 0;
-}
+.footer-text,
+.footer a{
+  color:var(--muted);
 
-.footer-grid a:hover{
-  color:#fff;
-}
-
-.copyright{
-  padding-top:18px;
-  border-top:1px solid var(--border);
-  text-align:center;
-  color:#586273;
   font-size:10px;
 }
 
-/* ================= MOBILE ================= */
+.footer a{
+  display:block;
 
-@media(max-width:950px){
+  margin:7px 0;
+}
 
-  .menu{
+.footer a:hover{
+  color:white;
+}
+
+.footer-bottom{
+  border-top:1px solid var(--border);
+
+  padding-top:18px;
+
+  text-align:center;
+
+  color:#515c6d;
+
+  font-size:9px;
+}
+
+/* =========================================================
+   SEARCH MODAL
+   ========================================================= */
+
+.search-overlay{
+  position:fixed;
+
+  inset:0;
+
+  z-index:3000;
+
+  background:rgba(0,0,0,.72);
+
+  backdrop-filter:blur(12px);
+
+  display:none;
+
+  align-items:flex-start;
+
+  justify-content:center;
+
+  padding:100px 20px;
+}
+
+.search-overlay.active{
+  display:flex;
+}
+
+.search-box{
+  width:min(650px,100%);
+
+  border:1px solid var(--border);
+
+  border-radius:15px;
+
+  background:#0d1119;
+
+  padding:22px;
+
+  box-shadow:var(--shadow);
+}
+
+.search-box input{
+  width:100%;
+
+  padding:16px;
+
+  border-radius:10px;
+
+  border:1px solid var(--border);
+
+  background:#080b10;
+
+  color:white;
+
+  outline:none;
+
+  font-size:14px;
+}
+
+.close-search{
+  float:right;
+
+  margin-bottom:12px;
+
+  background:transparent;
+
+  border:0;
+
+  color:#8993a3;
+
+  cursor:pointer;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:1000px){
+
+  .main-menu{
     display:none;
+
     position:absolute;
-    top:76px;
+
     left:0;
     right:0;
-    background:#090c12;
-    border-bottom:1px solid var(--border);
+    top:78px;
+
     padding:20px;
+
     flex-direction:column;
+
     align-items:flex-start;
+
+    background:#090c12;
+
+    border-bottom:1px solid var(--border);
   }
 
-  .menu.active{
+  .main-menu.active{
     display:flex;
   }
 
-  .menu-btn{
-    display:block;
+  .mobile-menu{
+    display:grid;
   }
 
-  .subscribe-btn{
+  .nav-cta{
     display:none;
   }
 
-  .hero-grid{
+  .hero-layout{
     grid-template-columns:1fr;
   }
 
-  .content{
+  .main-layout{
     grid-template-columns:1fr;
+  }
+
+  .sidebar{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+  }
+
+  .sidebar .ad-slot{
+    margin:0;
+  }
+
+  .sidebar-box{
+    margin:0;
   }
 
   .footer-grid{
@@ -619,18 +1377,18 @@ footer{
   }
 }
 
-@media(max-width:650px){
+@media(max-width:700px){
 
-  .topbar{
+  .top-strip{
     display:none;
   }
 
   .nav{
-    min-height:64px;
+    min-height:65px;
   }
 
-  .menu{
-    top:64px;
+  .main-menu{
+    top:65px;
   }
 
   .hero{
@@ -638,88 +1396,143 @@ footer{
   }
 
   .hero-main{
-    min-height:500px;
+    min-height:480px;
   }
 
   .hero-content{
-    padding:25px;
+    padding:26px;
   }
 
-  .hero h1{
-    font-size:40px;
+  .hero-title{
+    font-size:43px;
+
+    letter-spacing:-2px;
   }
 
-  .articles{
+  .hero-description{
+    font-size:13px;
+  }
+
+  .article-grid{
     grid-template-columns:1fr;
   }
 
-  .trending{
+  .trending-grid{
     grid-template-columns:1fr;
   }
 
-  .form{
+  .big-feature{
+    grid-template-columns:1fr;
+  }
+
+  .big-feature-visual{
+    min-height:190px;
+  }
+
+  .sidebar{
+    display:block;
+  }
+
+  .sidebar-box{
+    margin-bottom:18px;
+  }
+
+  .newsletter-form{
     flex-direction:column;
   }
 
-  .form button{
-    min-height:43px;
+  .newsletter-form button{
+    min-height:44px;
   }
 
   .footer-grid{
     grid-template-columns:1fr;
   }
+
+  .category-scroll{
+    gap:18px;
+  }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
 
-<div class="topbar">
-  <div class="container topbar-inner">
-    <span>OXINOB GAMING • USEFUL FIRST. ADS SECOND.</span>
-    <span>Fresh gaming content & guides</span>
+<!-- =======================================================
+     TOP STRIP
+     ======================================================= -->
+
+<div class="top-strip">
+
+  <div class="container top-strip-inner">
+
+    <div class="live">
+      <span class="live-dot"></span>
+      OXINOB GAMING
+    </div>
+
+    <div>
+      Useful first. Ads second.
+    </div>
+
   </div>
+
 </div>
 
 
-<!-- HEADER -->
+<!-- =======================================================
+     HEADER
+     ======================================================= -->
 
-<header class="main-header">
+<header class="header">
+
   <div class="container nav">
 
     <a href="index.html" class="logo">
       OXI<span>NOB</span>
     </a>
 
-    <nav class="menu" id="menu">
+
+    <nav class="main-menu" id="mainMenu">
 
       <a href="index.html">Home</a>
-      <a href="#news">Gaming News</a>
+
+      <a href="#latest">News</a>
+
       <a href="#guides">Guides</a>
+
       <a href="#reviews">Reviews</a>
+
       <a href="#tips">Tips & Tricks</a>
+
       <a href="#categories">Categories</a>
+
       <a href="about.html">About</a>
+
       <a href="contact.html">Contact</a>
 
     </nav>
 
-    <div class="nav-actions">
 
-      <button class="search-btn" aria-label="Search">
+    <div class="nav-tools">
+
+      <button
+        class="icon-btn"
+        onclick="openSearch()"
+        aria-label="Search">
         ⌕
       </button>
 
       <button
-        class="subscribe-btn"
+        class="nav-cta"
         onclick="document.getElementById('newsletter').scrollIntoView()">
-        Subscribe
+        JOIN OXINOB
       </button>
 
       <button
-        class="menu-btn"
+        class="icon-btn mobile-menu"
         onclick="toggleMenu()"
         aria-label="Menu">
         ☰
@@ -728,141 +1541,215 @@ footer{
     </div>
 
   </div>
+
 </header>
 
 
-<!-- CATEGORY NAVIGATION -->
+<!-- =======================================================
+     CATEGORY NAVIGATION
+     ======================================================= -->
 
-<div class="category-bar">
-  <div class="container categories">
+<div class="category-nav">
+
+  <div class="container category-scroll">
 
     <a href="#">PC Gaming</a>
+
     <a href="#">Mobile Gaming</a>
-    <a href="#">Console</a>
+
+    <a href="#">PlayStation</a>
+
+    <a href="#">Xbox</a>
+
+    <a href="#">Nintendo</a>
+
     <a href="#">Esports</a>
-    <a href="#">Gaming Tips</a>
+
     <a href="#">Game Guides</a>
+
     <a href="#">Reviews</a>
+
+    <a href="#">Tips</a>
+
     <a href="#">Trending</a>
 
   </div>
+
 </div>
 
 
 <main>
 
 
-<!-- TOP AD -->
+<!-- =======================================================
+     AD 01 — TOP
+     ======================================================= -->
 
 <div class="container">
-  <div class="ad">
-    ADVERTISEMENT
+
+  <div class="ad-slot">
+    <span class="ad-label">TOP BANNER</span>
   </div>
+
 </div>
 
 
-<!-- HERO -->
+<!-- =======================================================
+     HERO
+     ======================================================= -->
 
 <section class="hero">
 
-  <div class="container hero-grid">
+  <div class="container hero-layout">
+
 
     <article class="hero-main">
 
       <div class="hero-content">
 
-        <span class="label">
-          FEATURED STORY
+        <span class="eyebrow">
+          ✦ FEATURED STORY
         </span>
 
-        <h1>
-          The smarter way
-          to level up your
-          <span style="color:var(--accent2)">
-            gaming.
+        <h1 class="hero-title">
+
+          ENTER THE
+          <span class="gradient-text">
+            NEXT LEVEL.
           </span>
+
         </h1>
 
-        <p>
-          Discover useful gaming guides, practical tips,
-          updates and reviews designed to help you get more
-          from every session.
+        <p class="hero-description">
+
+          Discover premium gaming guides, useful strategies,
+          gaming news, reviews and practical tips designed
+          for modern players.
+
         </p>
 
-        <div class="meta">
+        <div class="hero-meta">
+
           <span>OXINOB EDITORIAL</span>
+
           <span>•</span>
+
           <span>8 MIN READ</span>
+
+          <span>•</span>
+
+          <span>AUG 2026</span>
+
         </div>
 
-        <a href="#guides" class="read">
-          Read Featured Guide →
-        </a>
+        <div class="hero-buttons">
+
+          <a href="#guides" class="primary-btn">
+            EXPLORE GUIDES →
+          </a>
+
+          <a href="#latest" class="secondary-btn">
+            LATEST NEWS
+          </a>
+
+        </div>
 
       </div>
 
     </article>
 
 
-    <div class="hero-side">
+    <aside class="hero-side">
 
-      <article class="side-card">
 
-        <span class="number">01</span>
+      <article class="side-story">
+
+        <span class="story-number">
+          01
+        </span>
+
+        <div class="story-category">
+          GAMING GUIDE
+        </div>
 
         <h3>
-          Gaming guides that actually help.
+          Improve your gameplay with smarter habits.
         </h3>
 
         <p>
-          Straightforward explanations without unnecessary
-          filler.
+          Practical ideas for players who want
+          useful information without the noise.
         </p>
 
       </article>
 
 
-      <article class="side-card">
+      <article class="side-story">
 
-        <span class="number">02</span>
+        <span class="story-number">
+          02
+        </span>
+
+        <div class="story-category">
+          PERFORMANCE
+        </div>
 
         <h3>
-          Discover better gaming habits.
+          Build a better gaming setup.
         </h3>
 
         <p>
-          Practical ideas for skills, settings and performance.
+          Explore simple ways to improve comfort,
+          performance and consistency.
         </p>
 
       </article>
 
-    </div>
+
+    </aside>
 
   </div>
 
 </section>
 
 
-<!-- FEATURE AD -->
+<!-- =======================================================
+     AD 02
+     ======================================================= -->
 
 <div class="container">
-  <div class="ad">
-    ADVERTISEMENT
+
+  <div class="ad-slot">
+    <span class="ad-label">HERO BOTTOM</span>
   </div>
+
 </div>
 
 
-<!-- LATEST ARTICLES -->
+<!-- =======================================================
+     LATEST CONTENT
+     ======================================================= -->
 
-<section id="news" class="section">
+<section class="section" id="latest">
 
   <div class="container">
 
-    <div class="section-heading">
+    <div class="section-header">
 
       <div>
-        <h2>Latest Articles</h2>
-        <p>Fresh stories, guides and useful gaming content.</p>
+
+        <div class="section-kicker">
+          LATEST
+        </div>
+
+        <h2 class="section-title">
+          Fresh from OXINOB
+        </h2>
+
+        <p class="section-subtitle">
+          New gaming stories, guides and useful content.
+        </p>
+
       </div>
 
       <a href="#" class="view-all">
@@ -872,12 +1759,13 @@ footer{
     </div>
 
 
-    <div class="content">
-
-      <div class="articles">
+    <div class="main-layout">
 
 
-        <article class="article">
+      <div class="article-grid">
+
+
+        <article class="article-card">
 
           <div class="article-image">
             🎮
@@ -885,21 +1773,23 @@ footer{
 
           <div class="article-body">
 
-            <span class="article-category">
-              Gaming Guide
-            </span>
+            <div class="article-tag">
+              GAMING
+            </div>
 
-            <h3>
+            <h3 class="article-title">
               How to Build Better Gaming Habits
             </h3>
 
-            <p>
-              Simple habits that can make your sessions
-              more focused, comfortable and productive.
+            <p class="article-excerpt">
+              Simple habits that can make gaming sessions
+              more focused, comfortable and enjoyable.
             </p>
 
-            <div class="article-meta">
-              6 MIN READ • AUG 2026
+            <div class="article-info">
+              <span>6 MIN READ</span>
+              <span>•</span>
+              <span>AUG 2026</span>
             </div>
 
           </div>
@@ -907,7 +1797,7 @@ footer{
         </article>
 
 
-        <article class="article">
+        <article class="article-card">
 
           <div class="article-image">
             🎯
@@ -915,21 +1805,23 @@ footer{
 
           <div class="article-body">
 
-            <span class="article-category">
-              Tips & Tricks
-            </span>
+            <div class="article-tag">
+              GUIDES
+            </div>
 
-            <h3>
+            <h3 class="article-title">
               Improve Your Aim Without Guesswork
             </h3>
 
-            <p>
-              A practical approach to aim practice, movement
-              and consistency.
+            <p class="article-excerpt">
+              A practical approach to aim practice,
+              movement and consistency.
             </p>
 
-            <div class="article-meta">
-              7 MIN READ • AUG 2026
+            <div class="article-info">
+              <span>7 MIN READ</span>
+              <span>•</span>
+              <span>AUG 2026</span>
             </div>
 
           </div>
@@ -937,7 +1829,14 @@ footer{
         </article>
 
 
-        <article class="article">
+        <!-- NATIVE AD -->
+
+        <div class="native-ad">
+          ADVERTISEMENT
+        </div>
+
+
+        <article class="article-card">
 
           <div class="article-image">
             ⚙️
@@ -945,21 +1844,23 @@ footer{
 
           <div class="article-body">
 
-            <span class="article-category">
-              Performance
-            </span>
+            <div class="article-tag">
+              PERFORMANCE
+            </div>
 
-            <h3>
+            <h3 class="article-title">
               Make Your Gaming Setup More Efficient
             </h3>
 
-            <p>
-              Useful ideas for improving comfort, performance
-              and organization.
+            <p class="article-excerpt">
+              Useful ideas for improving comfort,
+              organization and performance.
             </p>
 
-            <div class="article-meta">
-              5 MIN READ • AUG 2026
+            <div class="article-info">
+              <span>5 MIN READ</span>
+              <span>•</span>
+              <span>AUG 2026</span>
             </div>
 
           </div>
@@ -967,7 +1868,7 @@ footer{
         </article>
 
 
-        <article class="article">
+        <article class="article-card">
 
           <div class="article-image">
             📰
@@ -975,21 +1876,62 @@ footer{
 
           <div class="article-body">
 
-            <span class="article-category">
-              Gaming News
-            </span>
+            <div class="article-tag">
+              GAMING NEWS
+            </div>
 
-            <h3>
+            <h3 class="article-title">
               What to Look For in Major Game Updates
             </h3>
 
-            <p>
-              Understand patches, balance changes, new features
-              and important fixes.
+            <p class="article-excerpt">
+              Understand patches, balance changes,
+              new features and important fixes.
             </p>
 
-            <div class="article-meta">
-              4 MIN READ • AUG 2026
+            <div class="article-info">
+              <span>4 MIN READ</span>
+              <span>•</span>
+              <span>AUG 2026</span>
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- NATIVE AD -->
+
+        <div class="native-ad">
+          ADVERTISEMENT
+        </div>
+
+
+        <article class="article-card">
+
+          <div class="article-image">
+            🏆
+          </div>
+
+          <div class="article-body">
+
+            <div class="article-tag">
+              COMPETITIVE
+            </div>
+
+            <h3 class="article-title">
+              Small Changes That Improve Your Gameplay
+            </h3>
+
+            <p class="article-excerpt">
+              Focus on fundamentals that can make a
+              noticeable difference over time.
+            </p>
+
+            <div class="article-info">
+              <span>6 MIN READ</span>
+              <span>•</span>
+              <span>AUG 2026</span>
             </div>
 
           </div>
@@ -1000,62 +1942,144 @@ footer{
       </div>
 
 
-      <!-- SIDEBAR -->
+      <!-- =================================================
+           SIDEBAR
+           ================================================= -->
 
-      <aside>
+      <aside class="sidebar">
+
 
         <div class="sidebar-box">
 
-          <div class="sidebar-title">
-            Popular
+          <div class="sidebar-heading">
+            MOST READ
           </div>
 
-          <div class="popular">
-            <div class="popular-number">01</div>
+
+          <div class="popular-item">
+
+            <div class="popular-number">
+              01
+            </div>
+
             <div>
-              <h4>
+
+              <div class="popular-title">
                 Best ways to improve your gaming skills
-              </h4>
-              <span>8.4K views</span>
+              </div>
+
+              <div class="popular-meta">
+                8.4K VIEWS
+              </div>
+
             </div>
+
           </div>
 
-          <div class="popular">
-            <div class="popular-number">02</div>
+
+          <div class="popular-item">
+
+            <div class="popular-number">
+              02
+            </div>
+
             <div>
-              <h4>
+
+              <div class="popular-title">
                 Gaming setup mistakes to avoid
-              </h4>
-              <span>6.7K views</span>
+              </div>
+
+              <div class="popular-meta">
+                6.7K VIEWS
+              </div>
+
             </div>
+
           </div>
 
-          <div class="popular">
-            <div class="popular-number">03</div>
+
+          <div class="popular-item">
+
+            <div class="popular-number">
+              03
+            </div>
+
             <div>
-              <h4>
+
+              <div class="popular-title">
                 Simple performance improvements
-              </h4>
-              <span>5.9K views</span>
+              </div>
+
+              <div class="popular-meta">
+                5.9K VIEWS
+              </div>
+
             </div>
+
           </div>
 
-          <div class="popular">
-            <div class="popular-number">04</div>
+
+          <div class="popular-item">
+
+            <div class="popular-number">
+              04
+            </div>
+
             <div>
-              <h4>
+
+              <div class="popular-title">
                 Beginner's gaming guide
-              </h4>
-              <span>4.8K views</span>
+              </div>
+
+              <div class="popular-meta">
+                4.8K VIEWS
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- SIDEBAR AD -->
+
+        <div class="ad-slot ad-tall">
+          <span class="ad-label">
+            SIDEBAR
+          </span>
+        </div>
+
+
+        <div class="sidebar-box">
+
+          <div class="sidebar-heading">
+            TRENDING
+          </div>
+
+          <div class="popular-item">
+            <div class="popular-number">#</div>
+
+            <div>
+              <div class="popular-title">
+                Gaming performance tips
+              </div>
+            </div>
+          </div>
+
+          <div class="popular-item">
+            <div class="popular-number">#</div>
+
+            <div>
+              <div class="popular-title">
+                New game updates
+              </div>
             </div>
           </div>
 
         </div>
 
-
-        <div class="ad ad-square">
-          ADVERTISEMENT
-        </div>
 
       </aside>
 
@@ -1066,53 +2090,89 @@ footer{
 </section>
 
 
-<!-- IN-CONTENT AD -->
+<!-- =======================================================
+     AD 03
+     ======================================================= -->
 
 <div class="container">
-  <div class="ad">
-    ADVERTISEMENT
+
+  <div class="ad-slot ad-large">
+
+    <span class="ad-label">
+      IN-CONTENT
+    </span>
+
   </div>
+
 </div>
 
 
-<!-- TRENDING -->
+<!-- =======================================================
+     TRENDING
+     ======================================================= -->
 
-<section class="section" id="guides">
+<section class="section" id="tips">
 
   <div class="container">
 
-    <div class="section-heading">
+    <div class="section-header">
 
       <div>
-        <h2>Trending Now</h2>
-        <p>Topics readers are checking out.</p>
+
+        <div class="section-kicker">
+          TRENDING
+        </div>
+
+        <h2 class="section-title">
+          What players are reading
+        </h2>
+
       </div>
 
     </div>
 
 
-    <div class="trending">
+    <div class="trending-grid">
 
-      <article class="trend">
-        <strong>#01 TRENDING</strong>
+
+      <article class="trending-card">
+
+        <div class="trending-label">
+          #01 TRENDING
+        </div>
+
         <h3>
           Gaming Performance Tips
         </h3>
+
       </article>
 
-      <article class="trend">
-        <strong>#02 TRENDING</strong>
+
+      <article class="trending-card">
+
+        <div class="trending-label">
+          #02 TRENDING
+        </div>
+
         <h3>
           Beginner Gaming Guides
         </h3>
+
       </article>
 
-      <article class="trend">
-        <strong>#03 TRENDING</strong>
+
+      <article class="trending-card">
+
+        <div class="trending-label">
+          #03 TRENDING
+        </div>
+
         <h3>
-          New Gaming Updates
+          Latest Gaming Updates
         </h3>
+
       </article>
+
 
     </div>
 
@@ -1121,38 +2181,173 @@ footer{
 </section>
 
 
-<!-- CATEGORIES -->
+<!-- =======================================================
+     AD 04
+     ======================================================= -->
+
+<div class="container">
+
+  <div class="ad-slot">
+    <span class="ad-label">
+      CONTENT BREAK
+    </span>
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     BIG FEATURE
+     ======================================================= -->
+
+<section class="section" id="reviews">
+
+  <div class="container">
+
+    <div class="section-header">
+
+      <div>
+
+        <div class="section-kicker">
+          EDITOR'S PICK
+        </div>
+
+        <h2 class="section-title">
+          Featured Guide
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <article class="big-feature">
+
+
+      <div class="big-feature-visual">
+        🎮
+      </div>
+
+
+      <div class="big-feature-content">
+
+        <div class="article-tag">
+          OXINOB EDITORIAL
+        </div>
+
+        <h2>
+          Play smarter,
+          not harder.
+        </h2>
+
+        <p>
+          Explore practical gaming strategies, useful
+          settings advice and simple ways to improve
+          your overall gaming experience.
+        </p>
+
+        <a
+          href="#guides"
+          class="primary-btn"
+          style="width:max-content;margin-top:20px;">
+          READ FEATURE →
+        </a>
+
+      </div>
+
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     AD 05
+     ======================================================= -->
+
+<div class="container">
+
+  <div class="ad-slot ad-large">
+    <span class="ad-label">
+      FEATURE AD
+    </span>
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     CATEGORIES
+     ======================================================= -->
 
 <section class="section" id="categories">
 
   <div class="container">
 
-    <div class="section-heading">
+    <div class="section-header">
 
       <div>
-        <h2>Explore Categories</h2>
-        <p>Find exactly what you're looking for.</p>
+
+        <div class="section-kicker">
+          EXPLORE
+        </div>
+
+        <h2 class="section-title">
+          Browse Categories
+        </h2>
+
+        <p class="section-subtitle">
+          Find content that matches your interests.
+        </p>
+
       </div>
 
     </div>
 
 
-    <div class="trending">
+    <div class="trending-grid">
 
-      <a href="#" class="trend">
-        <strong>GAMING</strong>
-        <h3>Gaming News</h3>
+
+      <a href="#" class="trending-card">
+
+        <div class="trending-label">
+          GAMING
+        </div>
+
+        <h3>
+          Gaming News
+        </h3>
+
       </a>
 
-      <a href="#" class="trend">
-        <strong>GUIDES</strong>
-        <h3>Game Guides</h3>
+
+      <a href="#" class="trending-card">
+
+        <div class="trending-label">
+          GUIDES
+        </div>
+
+        <h3>
+          Game Guides
+        </h3>
+
       </a>
 
-      <a href="#" class="trend">
-        <strong>REVIEWS</strong>
-        <h3>Gaming Reviews</h3>
+
+      <a href="#" class="trending-card">
+
+        <div class="trending-label">
+          REVIEWS
+        </div>
+
+        <h3>
+          Gaming Reviews
+        </h3>
+
       </a>
+
 
     </div>
 
@@ -1161,47 +2356,56 @@ footer{
 </section>
 
 
-<!-- BOTTOM AD -->
+<!-- =======================================================
+     AD 06
+     ======================================================= -->
 
 <div class="container">
-  <div class="ad">
-    ADVERTISEMENT
+
+  <div class="ad-slot">
+    <span class="ad-label">
+      LOWER CONTENT
+    </span>
   </div>
+
 </div>
 
 
-<!-- NEWSLETTER -->
+<!-- =======================================================
+     NEWSLETTER
+     ======================================================= -->
 
-<section id="newsletter" class="section">
+<section class="section" id="newsletter">
 
   <div class="container">
 
     <div class="newsletter">
 
-      <span class="label">
+      <div class="section-kicker">
         OXINOB NEWSLETTER
-      </span>
+      </div>
 
       <h2>
         Stay in the game.
       </h2>
 
       <p>
-        Get useful gaming guides, tips and new articles
-        delivered when fresh content is published.
+        Get useful gaming guides, tips and fresh stories
+        from OXINOB.
       </p>
 
+
       <form
-        class="form"
+        class="newsletter-form"
         onsubmit="subscribe(event)">
 
         <input
           type="email"
-          placeholder="Your email address"
+          placeholder="Enter your email address"
           required>
 
         <button type="submit">
-          Subscribe
+          SUBSCRIBE
         </button>
 
       </form>
@@ -1213,14 +2417,32 @@ footer{
 </section>
 
 
+<!-- =======================================================
+     FINAL AD
+     ======================================================= -->
+
+<div class="container">
+
+  <div class="ad-slot">
+    <span class="ad-label">
+      FOOTER BANNER
+    </span>
+  </div>
+
+</div>
+
+
 </main>
 
 
-<!-- FOOTER -->
+<!-- =======================================================
+     FOOTER
+     ======================================================= -->
 
-<footer>
+<footer class="footer">
 
   <div class="container footer-grid">
+
 
     <div>
 
@@ -1228,9 +2450,14 @@ footer{
         OXI<span>NOB</span>
       </div>
 
-      <p style="margin-top:12px;max-width:360px;">
-        OXINOB is a gaming publication focused on useful,
-        original and easy-to-understand gaming content.
+      <p
+        class="footer-text"
+        style="margin-top:12px;max-width:370px;">
+
+        OXINOB is a premium gaming publication
+        focused on useful guides, gaming news,
+        reviews, tips and original content.
+
       </p>
 
     </div>
@@ -1238,11 +2465,18 @@ footer{
 
     <div>
 
-      <h4>Explore</h4>
+      <div class="footer-title">
+        EXPLORE
+      </div>
 
       <a href="index.html">Home</a>
-      <a href="#news">Gaming News</a>
+
+      <a href="#latest">Latest</a>
+
       <a href="#guides">Guides</a>
+
+      <a href="#reviews">Reviews</a>
+
       <a href="#categories">Categories</a>
 
     </div>
@@ -1250,11 +2484,16 @@ footer{
 
     <div>
 
-      <h4>Information</h4>
+      <div class="footer-title">
+        INFORMATION
+      </div>
 
       <a href="about.html">About Us</a>
+
       <a href="contact.html">Contact</a>
+
       <a href="privacy.html">Privacy Policy</a>
+
       <a href="terms.html">Terms</a>
 
     </div>
@@ -1262,40 +2501,104 @@ footer{
 
     <div>
 
-      <h4>Legal</h4>
+      <div class="footer-title">
+        LEGAL
+      </div>
 
       <a href="disclaimer.html">Disclaimer</a>
+
       <a href="cookie-policy.html">Cookie Policy</a>
+
       <a href="#">Advertising</a>
 
     </div>
 
+
   </div>
 
 
-  <div class="container copyright">
+  <div class="container footer-bottom">
+
     © 2026 OXINOB. All rights reserved.
+
   </div>
 
 </footer>
+
+
+<!-- =======================================================
+     SEARCH
+     ======================================================= -->
+
+<div
+  class="search-overlay"
+  id="searchOverlay">
+
+  <div class="search-box">
+
+    <button
+      class="close-search"
+      onclick="closeSearch()">
+      ✕ Close
+    </button>
+
+    <input
+      type="search"
+      placeholder="Search OXINOB...">
+
+  </div>
+
+</div>
 
 
 <script>
 
 function toggleMenu(){
 
-  const menu = document.getElementById("menu");
+  const menu =
+    document.getElementById("mainMenu");
 
   menu.classList.toggle("active");
 
 }
 
 
+function openSearch(){
+
+  document
+    .getElementById("searchOverlay")
+    .classList.add("active");
+
+}
+
+
+function closeSearch(){
+
+  document
+    .getElementById("searchOverlay")
+    .classList.remove("active");
+
+}
+
+
+document
+  .getElementById("searchOverlay")
+  .addEventListener("click",function(e){
+
+    if(e.target === this){
+      closeSearch();
+    }
+
+  });
+
+
 function subscribe(event){
 
   event.preventDefault();
 
-  alert("Thanks for subscribing to OXINOB!");
+  alert(
+    "Thanks for subscribing to OXINOB!"
+  );
 
   event.target.reset();
 
@@ -1303,6 +2606,6 @@ function subscribe(event){
 
 </script>
 
+
 </body>
 </html>
-```
