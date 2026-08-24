@@ -2,47 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- MOBILE FIRST -->
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  >
+  <title>OXCINOB | Gaming News, Guides, Tips & Reviews</title>
 
-  <title>OXINOB | Gaming Guides, News, Tips & Reviews</title>
+  <meta name="description"
+    content="OXCINOB brings useful gaming news, guides, tips, reviews and practical gaming content for players.">
 
-  <meta
-    name="description"
-    content="OXINOB brings useful gaming guides, tips, gaming news, reviews and practical solutions for players."
-  >
-
-  <meta
-    name="robots"
-    content="index, follow, max-image-preview:large"
-  >
-
-  <meta name="theme-color" content="#070a10">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="OXINOB | Gaming Guides, News & Tips">
-  <meta
-    property="og:description"
-    content="Useful gaming guides, tips, news and reviews for players."
-  >
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://oxcinob.in/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#07090f">
 
   <link rel="canonical" href="https://oxcinob.in/">
 
   <style>
 
-    /* =====================================================
-       RESET
-    ===================================================== */
-
-    *,
-    *::before,
-    *::after {
+    * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
@@ -51,9 +27,21 @@
     }
 
     body {
-      margin: 0;
-      background: #070a10;
+      background:
+        radial-gradient(
+          circle at 85% 0%,
+          rgba(118, 92, 255, .14),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 10% 20%,
+          rgba(0, 210, 255, .06),
+          transparent 25%
+        ),
+        #07090f;
+
       color: #f5f7fb;
+
       font-family:
         Inter,
         system-ui,
@@ -61,14 +49,9 @@
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
+
       line-height: 1.6;
       overflow-x: hidden;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
     }
 
     a {
@@ -81,77 +64,112 @@
       font: inherit;
     }
 
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
     :root {
-      --bg: #070a10;
+      --bg: #07090f;
       --surface: #0d121b;
-      --surface-2: #121925;
-      --surface-3: #182131;
-
-      --text: #f5f7fb;
-      --muted: #9aa5b5;
-      --muted-2: #667386;
-
+      --surface2: #131a25;
       --border: rgba(255,255,255,.08);
 
-      --accent: #7865ff;
-      --accent-2: #18d9ff;
-      --success: #43d28c;
+      --text: #f5f7fb;
+      --muted: #96a1b1;
+      --muted2: #626d7e;
 
-      --radius: 14px;
-      --max: 1180px;
+      --purple: #7861ff;
+      --blue: #3d8cff;
+      --cyan: #18d9ff;
+      --green: #43d38b;
     }
 
-    .container {
-      width: min(var(--max), 92%);
-      margin-inline: auto;
+    /* ================= TOP BAR ================= */
+
+    .topbar {
+      border-bottom: 1px solid var(--border);
+      background: #080b11;
+      color: var(--muted);
+
+      font-size: 10px;
     }
 
-    /* =====================================================
-       HEADER
-    ===================================================== */
+    .topbar-inner {
+      min-height: 32px;
 
-    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .live {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
       position: sticky;
       top: 0;
       z-index: 1000;
 
-      background: rgba(7,10,16,.94);
+      background: rgba(7,9,15,.92);
+
       backdrop-filter: blur(18px);
 
       border-bottom: 1px solid var(--border);
     }
 
     .nav {
-      min-height: 64px;
+      min-height: 74px;
 
       display: flex;
       align-items: center;
-      justify-content: space-between;
 
-      gap: 14px;
+      gap: 25px;
     }
 
     .logo {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 950;
+
       letter-spacing: -1.5px;
+
+      white-space: nowrap;
     }
 
     .logo span {
-      color: var(--accent-2);
+      color: var(--cyan);
     }
 
-    .nav-links {
+    .desktop-menu {
       display: none;
     }
 
     .nav-actions {
+      margin-left: auto;
+
       display: flex;
       align-items: center;
-      gap: 7px;
+
+      gap: 8px;
     }
 
-    .nav-btn {
+    .icon-btn {
       width: 38px;
       height: 38px;
 
@@ -159,7 +177,7 @@
       place-items: center;
 
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 9px;
 
       background: var(--surface);
       color: white;
@@ -167,89 +185,107 @@
       cursor: pointer;
     }
 
-    .desktop-subscribe {
+    .subscribe {
       display: none;
+
+      padding: 10px 15px;
+
+      border: 0;
+      border-radius: 9px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--purple),
+          var(--blue)
+        );
+
+      color: white;
+
+      font-size: 10px;
+      font-weight: 900;
+
+      cursor: pointer;
     }
 
-    /* =====================================================
-       MOBILE NAV
-    ===================================================== */
+    /* ================= MOBILE MENU ================= */
 
-    .mobile-nav {
+    .mobile-menu {
       position: fixed;
-      inset: 64px 0 auto 0;
+
+      top: 74px;
+      left: 0;
+      right: 0;
 
       z-index: 999;
 
       display: none;
 
-      padding: 18px;
+      padding: 15px;
 
       background: #080c13;
+
       border-bottom: 1px solid var(--border);
 
-      box-shadow: 0 25px 60px rgba(0,0,0,.45);
+      box-shadow: 0 25px 50px rgba(0,0,0,.4);
     }
 
-    .mobile-nav.active {
+    .mobile-menu.active {
       display: block;
     }
 
-    .mobile-nav a {
+    .mobile-menu a {
       display: block;
 
       padding: 13px 8px;
 
-      color: #c4cad4;
-
       border-bottom: 1px solid var(--border);
 
-      font-size: 14px;
+      color: #c4cad4;
+
+      font-size: 13px;
       font-weight: 700;
     }
 
-    /* =====================================================
-       CATEGORY BAR
-    ===================================================== */
+    /* ================= CATEGORY NAV ================= */
 
-    .categories {
+    .category-bar {
       border-bottom: 1px solid var(--border);
-      background: #0a0e15;
+
+      background: #0a0d14;
     }
 
-    .category-scroll {
-      min-height: 43px;
+    .categories {
+      min-height: 44px;
 
       display: flex;
       align-items: center;
 
-      gap: 19px;
+      gap: 20px;
 
       overflow-x: auto;
 
       scrollbar-width: none;
     }
 
-    .category-scroll::-webkit-scrollbar {
+    .categories::-webkit-scrollbar {
       display: none;
     }
 
-    .category-scroll a {
+    .categories a {
       flex: 0 0 auto;
 
-      color: #818c9d;
+      color: #7f8999;
 
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 750;
     }
 
-    .category-scroll a:hover {
+    .categories a:hover {
       color: white;
     }
 
-    /* =====================================================
-       AD SLOT
-       ===================================================== */
+    /* ================= AD SLOTS ================= */
 
     .ad-slot {
       min-height: 90px;
@@ -263,13 +299,15 @@
       position: relative;
 
       border: 1px dashed rgba(255,255,255,.13);
+
       border-radius: 10px;
 
-      background: rgba(255,255,255,.012);
+      background: rgba(255,255,255,.01);
 
-      color: #4f5b6d;
+      color: #505b6c;
 
       font-size: 9px;
+
       letter-spacing: 1px;
     }
 
@@ -280,45 +318,46 @@
     .ad-label {
       position: absolute;
 
-      top: 5px;
       right: 8px;
+      top: 5px;
+
+      color: #3c4655;
 
       font-size: 7px;
-      color: #3e4858;
     }
 
-    /* =====================================================
-       HERO
-    ===================================================== */
+    /* ================= HERO ================= */
 
     .hero {
-      padding: 26px 0 10px;
+      padding: 28px 0 10px;
     }
 
     .hero-card {
-      min-height: 500px;
+      min-height: 510px;
+
+      position: relative;
 
       display: flex;
       align-items: flex-end;
 
-      position: relative;
       overflow: hidden;
 
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+
+      border-radius: 15px;
 
       background:
         linear-gradient(
           to top,
-          rgba(3,5,9,.98) 0%,
-          rgba(3,5,9,.72) 38%,
-          rgba(3,5,9,.15) 100%
+          rgba(3,5,9,.98),
+          rgba(3,5,9,.55) 45%,
+          rgba(3,5,9,.08)
         ),
         radial-gradient(
-          circle at 72% 25%,
-          #51489c,
-          #202c49 35%,
-          #0e1624 68%,
+          circle at 70% 25%,
+          #54489e,
+          #25324c 35%,
+          #111827 65%,
           #0a0f17
         );
 
@@ -331,15 +370,15 @@
 
       position: absolute;
 
-      width: 330px;
-      height: 330px;
+      width: 350px;
+      height: 350px;
 
       right: -100px;
       top: -100px;
 
       border-radius: 50%;
 
-      background: var(--accent-2);
+      background: var(--cyan);
 
       filter: blur(130px);
 
@@ -348,40 +387,43 @@
 
     .hero-content {
       position: relative;
+
       z-index: 2;
 
-      padding: 26px;
+      padding: 27px;
     }
 
     .eyebrow {
-      color: var(--accent-2);
+      color: var(--cyan);
 
       font-size: 9px;
       font-weight: 900;
 
       letter-spacing: 1.5px;
+
       text-transform: uppercase;
     }
 
     .hero h1 {
-      margin: 10px 0 15px;
+      max-width: 850px;
 
-      max-width: 800px;
+      margin: 10px 0 16px;
 
-      font-size: clamp(40px, 12vw, 76px);
-      line-height: .98;
+      font-size: clamp(42px, 11vw, 78px);
 
-      letter-spacing: -3px;
+      line-height: .97;
+
+      letter-spacing: -4px;
     }
 
     .gradient {
       background:
         linear-gradient(
           90deg,
-          #fff,
-          #a395ff,
-          #48a7ff,
-          #1edcff
+          #ffffff,
+          #a193ff,
+          #55a7ff,
+          #19ddff
         );
 
       -webkit-background-clip: text;
@@ -390,10 +432,10 @@
       color: transparent;
     }
 
-    .hero-description {
+    .hero-text {
       max-width: 650px;
 
-      color: #b1bac8;
+      color: #b3bccb;
 
       font-size: 14px;
     }
@@ -401,13 +443,14 @@
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
 
-      margin-top: 16px;
+      gap: 11px;
 
-      color: #687487;
+      margin-top: 17px;
 
-      font-size: 9px;
+      color: #687486;
+
+      font-size: 8px;
       font-weight: 800;
     }
 
@@ -417,78 +460,82 @@
 
       gap: 9px;
 
-      margin-top: 21px;
+      margin-top: 23px;
     }
 
     .button {
+      min-height: 43px;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
-
-      min-height: 43px;
 
       padding: 0 16px;
 
       border-radius: 9px;
 
-      font-size: 11px;
-      font-weight: 850;
+      font-size: 10px;
+      font-weight: 900;
     }
 
     .button-primary {
       background: white;
-      color: #070a10;
+      color: #07090f;
     }
 
     .button-secondary {
       border: 1px solid rgba(255,255,255,.13);
+
       background: rgba(255,255,255,.05);
+
+      color: white;
     }
 
-    /* =====================================================
-       SECTION
-    ===================================================== */
+    /* ================= SECTIONS ================= */
 
-    .section {
+    section {
       padding: 38px 0;
     }
 
-    .section-heading {
-      margin-bottom: 19px;
-    }
-
     .section-kicker {
-      color: var(--accent-2);
+      color: var(--cyan);
 
-      font-size: 9px;
+      font-size: 8px;
       font-weight: 900;
 
-      letter-spacing: 1.3px;
+      letter-spacing: 1.5px;
+
       text-transform: uppercase;
     }
 
-    .section-heading h2 {
-      margin: 3px 0;
+    .section-title {
+      margin: 4px 0;
 
-      font-size: 27px;
+      font-size: 28px;
+
       line-height: 1.15;
 
-      letter-spacing: -.8px;
+      letter-spacing: -1px;
     }
 
-    .section-heading p {
-      margin: 0;
-
+    .section-description {
       color: var(--muted);
 
       font-size: 11px;
     }
 
-    /* =====================================================
-       ARTICLE GRID
-    ===================================================== */
+    /* ================= MAIN LAYOUT ================= */
 
-    .articles {
+    .main-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      gap: 22px;
+    }
+
+    /* ================= ARTICLE CARDS ================= */
+
+    .article-grid {
       display: grid;
       grid-template-columns: 1fr;
 
@@ -499,21 +546,23 @@
       overflow: hidden;
 
       border: 1px solid var(--border);
+
       border-radius: 12px;
 
       background: var(--surface);
 
-      transition: transform .25s, border-color .25s;
+      transition: .25s;
     }
 
     .article:hover {
       transform: translateY(-4px);
 
-      border-color: rgba(120,101,255,.35);
+      border-color:
+        rgba(120,97,255,.35);
     }
 
     .article-image {
-      min-height: 185px;
+      min-height: 190px;
 
       display: grid;
       place-items: center;
@@ -523,23 +572,24 @@
       background:
         linear-gradient(
           135deg,
-          rgba(120,101,255,.38),
-          rgba(24,217,255,.06)
+          rgba(120,97,255,.38),
+          rgba(24,217,255,.05)
         ),
-        #131b29;
+        #131a27;
     }
 
     .article-body {
       padding: 18px;
     }
 
-    .article-category {
-      color: var(--accent-2);
+    .article-tag {
+      color: var(--cyan);
 
       font-size: 8px;
       font-weight: 900;
 
       letter-spacing: 1px;
+
       text-transform: uppercase;
     }
 
@@ -547,6 +597,7 @@
       margin: 7px 0;
 
       font-size: 18px;
+
       line-height: 1.35;
     }
 
@@ -564,31 +615,31 @@
 
       margin-top: 13px;
 
-      color: var(--muted-2);
+      color: var(--muted2);
 
       font-size: 8px;
       font-weight: 800;
     }
 
-    /* =====================================================
-       IN-CONTENT AD
-    ===================================================== */
+    /* ================= NATIVE AD ================= */
 
     .native-ad {
-      min-height: 185px;
+      min-height: 190px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
       border: 1px dashed rgba(255,255,255,.13);
+
       border-radius: 12px;
 
-      background: rgba(255,255,255,.012);
+      background: rgba(255,255,255,.01);
 
-      color: #4f5b6d;
+      color: #505b6c;
 
       font-size: 9px;
+
       letter-spacing: 1px;
     }
 
@@ -596,31 +647,30 @@
       content: "ADVERTISEMENT";
     }
 
-    /* =====================================================
-       SIDEBAR
-    ===================================================== */
+    /* ================= SIDEBAR ================= */
 
     .sidebar {
-      margin-top: 24px;
+      margin-top: 22px;
     }
 
     .sidebar-box {
-      margin-bottom: 16px;
-
       overflow: hidden;
 
+      margin-bottom: 16px;
+
       border: 1px solid var(--border);
+
       border-radius: 12px;
 
       background: var(--surface);
     }
 
-    .sidebar-title {
+    .sidebar-heading {
       padding: 14px 16px;
 
       border-bottom: 1px solid var(--border);
 
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 900;
 
       letter-spacing: 1px;
@@ -628,6 +678,7 @@
 
     .popular {
       display: flex;
+
       gap: 11px;
 
       padding: 13px 15px;
@@ -640,7 +691,7 @@
     }
 
     .popular-number {
-      color: #4e596b;
+      color: #4d586a;
 
       font-size: 17px;
       font-weight: 950;
@@ -650,6 +701,7 @@
       margin: 0;
 
       font-size: 11px;
+
       line-height: 1.4;
     }
 
@@ -658,28 +710,28 @@
 
       margin-top: 3px;
 
-      color: var(--muted-2);
+      color: var(--muted2);
 
       font-size: 8px;
     }
 
-    /* =====================================================
-       TRENDING
-    ===================================================== */
+    /* ================= TRENDING ================= */
 
     .trending {
       display: grid;
+
       grid-template-columns: 1fr;
 
       gap: 12px;
     }
 
-    .trend-card {
-      min-height: 125px;
+    .trend {
+      min-height: 130px;
 
-      padding: 19px;
+      padding: 18px;
 
       border: 1px solid var(--border);
+
       border-radius: 12px;
 
       background: var(--surface);
@@ -687,62 +739,63 @@
       transition: .25s;
     }
 
-    .trend-card:hover {
+    .trend:hover {
       transform: translateY(-3px);
     }
 
-    .trend-card small {
-      color: var(--accent-2);
+    .trend small {
+      color: var(--cyan);
 
       font-size: 8px;
       font-weight: 900;
     }
 
-    .trend-card h3 {
-      margin-top: 8px;
+    .trend h3 {
+      margin-top: 7px;
 
       font-size: 16px;
+
       line-height: 1.35;
     }
 
-    /* =====================================================
-       FEATURE
-    ===================================================== */
+    /* ================= FEATURE ================= */
 
     .feature {
       overflow: hidden;
 
       border: 1px solid var(--border);
+
       border-radius: 14px;
 
       background: var(--surface);
     }
 
-    .feature-visual {
+    .feature-image {
       min-height: 220px;
 
       display: grid;
       place-items: center;
 
-      font-size: 64px;
+      font-size: 65px;
 
       background:
         linear-gradient(
           135deg,
-          rgba(120,101,255,.4),
+          rgba(120,97,255,.42),
           rgba(24,217,255,.06)
         ),
-        #111927;
+        #111a28;
     }
 
     .feature-content {
-      padding: 23px;
+      padding: 24px;
     }
 
     .feature-content h2 {
       margin: 7px 0 10px;
 
       font-size: 30px;
+
       line-height: 1.08;
     }
 
@@ -752,66 +805,63 @@
       font-size: 12px;
     }
 
-    /* =====================================================
-       CATEGORY CARDS
-    ===================================================== */
+    /* ================= CATEGORIES ================= */
 
     .category-grid {
       display: grid;
+
       grid-template-columns: repeat(2, 1fr);
 
-      gap: 11px;
+      gap: 10px;
     }
 
-    .category-card {
+    .category {
       padding: 17px;
 
       border: 1px solid var(--border);
+
       border-radius: 11px;
 
       background: var(--surface);
     }
 
-    .category-card strong {
-      display: block;
-
-      color: var(--accent-2);
+    .category strong {
+      color: var(--cyan);
 
       font-size: 8px;
 
       letter-spacing: 1px;
     }
 
-    .category-card h3 {
-      margin-top: 6px;
+    .category h3 {
+      margin-top: 5px;
 
       font-size: 14px;
     }
 
-    .category-card p {
-      margin: 3px 0 0;
+    .category p {
+      margin-top: 3px;
 
       color: var(--muted);
 
       font-size: 9px;
     }
 
-    /* =====================================================
-       NEWSLETTER
-    ===================================================== */
+    /* ================= NEWSLETTER ================= */
 
     .newsletter {
-      padding: 40px 20px;
+      padding: 42px 20px;
 
       text-align: center;
 
       border: 1px solid var(--border);
+
       border-radius: 14px;
 
       background:
         radial-gradient(
           circle at 50% 0%,
-          rgba(120,101,255,.17),
+          rgba(120,97,255,.18),
           transparent 60%
         ),
         var(--surface);
@@ -820,11 +870,11 @@
     .newsletter h2 {
       margin: 5px 0;
 
-      font-size: 29px;
+      font-size: 30px;
     }
 
     .newsletter p {
-      max-width: 550px;
+      max-width: 560px;
 
       margin: auto;
 
@@ -834,12 +884,12 @@
     }
 
     .newsletter-form {
+      max-width: 480px;
+
       display: flex;
       flex-direction: column;
 
       gap: 8px;
-
-      max-width: 470px;
 
       margin: 20px auto 0;
     }
@@ -850,12 +900,14 @@
       padding: 0 13px;
 
       border: 1px solid var(--border);
+
       border-radius: 9px;
 
-      outline: none;
-
       background: #080b10;
+
       color: white;
+
+      outline: none;
 
       font-size: 12px;
     }
@@ -864,26 +916,25 @@
       min-height: 45px;
 
       border: 0;
+
       border-radius: 9px;
 
-      background: var(--accent);
+      background: var(--purple);
 
       color: white;
 
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 900;
 
       cursor: pointer;
     }
 
-    /* =====================================================
-       FOOTER
-    ===================================================== */
+    /* ================= FOOTER ================= */
 
     footer {
       margin-top: 30px;
 
-      padding: 40px 0 20px;
+      padding: 42px 0 20px;
 
       border-top: 1px solid var(--border);
 
@@ -892,6 +943,7 @@
 
     .footer-grid {
       display: grid;
+
       grid-template-columns: 1fr 1fr;
 
       gap: 25px;
@@ -902,49 +954,50 @@
     .footer-title {
       margin-bottom: 10px;
 
-      color: white;
-
       font-size: 10px;
+
       font-weight: 900;
     }
 
-    .footer p,
-    .footer a {
+    footer p,
+    footer a {
       color: var(--muted);
 
       font-size: 10px;
     }
 
-    .footer a {
+    footer a {
       display: block;
 
       margin: 6px 0;
     }
 
-    .footer-bottom {
+    .copyright {
       padding-top: 18px;
 
       border-top: 1px solid var(--border);
 
-      color: var(--muted-2);
-
       text-align: center;
+
+      color: var(--muted2);
 
       font-size: 9px;
     }
 
-    /* =====================================================
-       TABLET
-    ===================================================== */
+    /* ================= TABLET ================= */
 
     @media (min-width: 650px) {
 
-      .articles {
+      .article-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
       .trending {
         grid-template-columns: repeat(3, 1fr);
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(4, 1fr);
       }
 
       .newsletter-form {
@@ -955,15 +1008,9 @@
         padding: 0 20px;
       }
 
-      .category-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-
     }
 
-    /* =====================================================
-       DESKTOP
-    ===================================================== */
+    /* ================= DESKTOP ================= */
 
     @media (min-width: 950px) {
 
@@ -971,7 +1018,7 @@
         min-height: 76px;
       }
 
-      .nav-links {
+      .desktop-menu {
         display: flex;
 
         align-items: center;
@@ -981,8 +1028,8 @@
         flex: 1;
       }
 
-      .nav-links a {
-        color: #aeb7c6;
+      .desktop-menu a {
+        color: #adb6c5;
 
         font-size: 11px;
         font-weight: 750;
@@ -990,11 +1037,11 @@
         white-space: nowrap;
       }
 
-      .nav-links a:hover {
+      .desktop-menu a:hover {
         color: white;
       }
 
-      .desktop-subscribe {
+      .subscribe {
         display: inline-flex;
       }
 
@@ -1002,26 +1049,16 @@
         display: none;
       }
 
-      .mobile-nav {
-        display: none !important;
-      }
-
       .hero-card {
-        min-height: 570px;
+        min-height: 580px;
       }
 
       .hero-content {
         padding: 42px;
       }
 
-      .main-content-layout {
-        display: grid;
-
-        grid-template-columns:
-          minmax(0,1fr)
-          290px;
-
-        gap: 25px;
+      .main-layout {
+        grid-template-columns: minmax(0, 1fr) 290px;
       }
 
       .sidebar {
@@ -1034,7 +1071,7 @@
         grid-template-columns: 1.1fr .9fr;
       }
 
-      .feature-visual {
+      .feature-image {
         min-height: 320px;
       }
 
@@ -1049,50 +1086,78 @@
 
 <body>
 
-  <!-- ===================================================
-       HEADER
-  ==================================================== -->
 
-  <header class="header">
+  <!-- TOP BAR -->
+
+  <div class="topbar">
+
+    <div class="container topbar-inner">
+
+      <div class="live">
+        <span class="live-dot"></span>
+        OXCINOB GAMING
+      </div>
+
+      <div>
+        Gaming • Guides • News • Reviews
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- HEADER -->
+
+  <header>
 
     <div class="container nav">
 
       <a href="index.html" class="logo">
-        OXI<span>NOB</span>
+        OXCINOB
       </a>
 
-      <nav class="nav-links">
+
+      <nav class="desktop-menu">
 
         <a href="index.html">Home</a>
+
         <a href="#latest">News</a>
+
         <a href="#guides">Guides</a>
+
         <a href="#reviews">Reviews</a>
+
         <a href="#tips">Tips</a>
+
         <a href="#categories">Categories</a>
+
         <a href="about.html">About</a>
+
         <a href="contact.html">Contact</a>
 
       </nav>
 
+
       <div class="nav-actions">
 
         <button
-          class="nav-btn"
-          onclick="toggleSearch()"
+          class="icon-btn"
+          onclick="searchSite()"
           aria-label="Search">
           ⌕
         </button>
 
         <a
-          class="button button-primary desktop-subscribe"
-          href="#newsletter">
+          href="#newsletter"
+          class="subscribe">
           SUBSCRIBE
         </a>
 
         <button
-          class="nav-btn mobile-menu"
+          class="icon-btn mobile-menu"
           onclick="toggleMobileMenu()"
-          aria-label="Open menu">
+          aria-label="Menu">
           ☰
         </button>
 
@@ -1103,9 +1168,9 @@
   </header>
 
 
-  <!-- MOBILE MENU -->
+  <!-- MOBILE NAV -->
 
-  <nav class="mobile-nav" id="mobileNav">
+  <nav class="mobile-menu" id="mobileMenu">
 
     <a href="index.html">Home</a>
     <a href="#latest">Gaming News</a>
@@ -1121,9 +1186,9 @@
 
   <!-- CATEGORY BAR -->
 
-  <div class="categories">
+  <div class="category-bar">
 
-    <div class="container category-scroll">
+    <div class="container categories">
 
       <a href="#">PC Gaming</a>
       <a href="#">Mobile Gaming</a>
@@ -1131,7 +1196,7 @@
       <a href="#">Xbox</a>
       <a href="#">Nintendo</a>
       <a href="#">Esports</a>
-      <a href="#">Guides</a>
+      <a href="#">Game Guides</a>
       <a href="#">Reviews</a>
       <a href="#">Tips</a>
       <a href="#">Trending</a>
@@ -1142,6 +1207,7 @@
 
 
   <main>
+
 
     <!-- TOP AD -->
 
@@ -1175,14 +1241,14 @@
               </span>
             </h1>
 
-            <p class="hero-description">
+            <p class="hero-text">
               Discover useful gaming guides, practical tips,
-              gaming news and reviews created to help players
-              make better decisions.
+              gaming news, reviews and original content
+              created for players.
             </p>
 
             <div class="hero-meta">
-              <span>OXINOB EDITORIAL</span>
+              <span>OXCINOB EDITORIAL</span>
               <span>•</span>
               <span>8 MIN READ</span>
               <span>•</span>
@@ -1219,245 +1285,244 @@
     <div class="container">
 
       <div class="ad-slot">
-        <span class="ad-label">HERO BOTTOM</span>
+        <span class="ad-label">
+          HERO
+        </span>
       </div>
 
     </div>
 
 
-    <!-- LATEST -->
+    <!-- LATEST ARTICLES -->
 
-    <section class="section" id="latest">
+    <section id="latest">
 
       <div class="container">
 
-        <div class="section-heading">
+        <div style="margin-bottom:20px;">
 
           <div class="section-kicker">
             LATEST
           </div>
 
-          <h2>
+          <h2 class="section-title">
             Fresh gaming content
           </h2>
 
-          <p>
-            Useful articles designed for real players.
+          <p class="section-description">
+            Useful articles built around real gaming questions.
           </p>
 
         </div>
 
 
-        <div class="main-content-layout">
+        <div class="main-layout">
 
 
-          <div>
-
-            <div class="articles">
+          <div class="article-grid">
 
 
-              <article class="article">
+            <article class="article">
 
-                <div class="article-image">
-                  🎮
+              <div class="article-image">
+                🎮
+              </div>
+
+              <div class="article-body">
+
+                <div class="article-tag">
+                  GAMING
                 </div>
 
-                <div class="article-body">
+                <h3>
+                  How to Build Better Gaming Habits
+                </h3>
 
-                  <div class="article-category">
-                    GAMING
-                  </div>
+                <p>
+                  Practical habits that can make your gaming
+                  sessions more focused and enjoyable.
+                </p>
 
-                  <h3>
-                    How to Build Better Gaming Habits
-                  </h3>
-
-                  <p>
-                    Practical habits that can make your
-                    gaming sessions more focused and enjoyable.
-                  </p>
-
-                  <div class="article-meta">
-                    <span>6 MIN READ</span>
-                    <span>•</span>
-                    <span>AUG 2026</span>
-                  </div>
-
+                <div class="article-meta">
+                  <span>6 MIN READ</span>
+                  <span>•</span>
+                  <span>AUG 2026</span>
                 </div>
 
-              </article>
+              </div>
+
+            </article>
 
 
-              <article class="article">
+            <article class="article">
 
-                <div class="article-image">
-                  🎯
+              <div class="article-image">
+                🎯
+              </div>
+
+              <div class="article-body">
+
+                <div class="article-tag">
+                  GUIDES
                 </div>
 
-                <div class="article-body">
+                <h3>
+                  Improve Your Aim Without Guesswork
+                </h3>
 
-                  <div class="article-category">
-                    GUIDES
-                  </div>
+                <p>
+                  A practical approach to improving
+                  consistency, movement and control.
+                </p>
 
-                  <h3>
-                    Improve Your Aim Without Guesswork
-                  </h3>
-
-                  <p>
-                    Learn a simple approach to improving
-                    consistency, movement and control.
-                  </p>
-
-                  <div class="article-meta">
-                    <span>7 MIN READ</span>
-                    <span>•</span>
-                    <span>AUG 2026</span>
-                  </div>
-
+                <div class="article-meta">
+                  <span>7 MIN READ</span>
+                  <span>•</span>
+                  <span>AUG 2026</span>
                 </div>
 
-              </article>
+              </div>
+
+            </article>
 
 
-              <!-- IN-CONTENT AD -->
+            <!-- AD -->
 
-              <div class="native-ad"></div>
+            <div class="native-ad"></div>
 
 
-              <article class="article">
+            <article class="article">
 
-                <div class="article-image">
-                  ⚙️
+              <div class="article-image">
+                ⚙️
+              </div>
+
+              <div class="article-body">
+
+                <div class="article-tag">
+                  PERFORMANCE
                 </div>
 
-                <div class="article-body">
+                <h3>
+                  Make Your Gaming Setup More Efficient
+                </h3>
 
-                  <div class="article-category">
-                    PERFORMANCE
-                  </div>
+                <p>
+                  Useful ideas for improving comfort,
+                  organization and performance.
+                </p>
 
-                  <h3>
-                    Make Your Gaming Setup More Efficient
-                  </h3>
-
-                  <p>
-                    Useful ideas for comfort, organization
-                    and a smoother gaming experience.
-                  </p>
-
-                  <div class="article-meta">
-                    <span>5 MIN READ</span>
-                    <span>•</span>
-                    <span>AUG 2026</span>
-                  </div>
-
+                <div class="article-meta">
+                  <span>5 MIN READ</span>
+                  <span>•</span>
+                  <span>AUG 2026</span>
                 </div>
 
-              </article>
+              </div>
+
+            </article>
 
 
-              <article class="article">
+            <article class="article">
 
-                <div class="article-image">
-                  📰
+              <div class="article-image">
+                📰
+              </div>
+
+              <div class="article-body">
+
+                <div class="article-tag">
+                  GAMING NEWS
                 </div>
 
-                <div class="article-body">
+                <h3>
+                  What to Look For in Game Updates
+                </h3>
 
-                  <div class="article-category">
-                    GAMING NEWS
-                  </div>
+                <p>
+                  Understand patches, balance changes,
+                  features and important fixes.
+                </p>
 
-                  <h3>
-                    What to Look For in Game Updates
-                  </h3>
-
-                  <p>
-                    Understand patches, balance changes,
-                    features and important fixes.
-                  </p>
-
-                  <div class="article-meta">
-                    <span>4 MIN READ</span>
-                    <span>•</span>
-                    <span>AUG 2026</span>
-                  </div>
-
+                <div class="article-meta">
+                  <span>4 MIN READ</span>
+                  <span>•</span>
+                  <span>AUG 2026</span>
                 </div>
 
-              </article>
+              </div>
+
+            </article>
 
 
-              <!-- SECOND IN-CONTENT AD -->
+            <!-- AD -->
 
-              <div class="native-ad"></div>
+            <div class="native-ad"></div>
 
 
-              <article class="article">
+            <article class="article">
 
-                <div class="article-image">
-                  🏆
+              <div class="article-image">
+                🏆
+              </div>
+
+              <div class="article-body">
+
+                <div class="article-tag">
+                  COMPETITIVE
                 </div>
 
-                <div class="article-body">
+                <h3>
+                  Small Changes That Improve Gameplay
+                </h3>
 
-                  <div class="article-category">
-                    COMPETITIVE
-                  </div>
+                <p>
+                  Focus on fundamentals that can make
+                  a noticeable difference over time.
+                </p>
 
-                  <h3>
-                    Small Changes That Improve Gameplay
-                  </h3>
-
-                  <p>
-                    Focus on fundamentals that can make
-                    a noticeable difference over time.
-                  </p>
-
-                  <div class="article-meta">
-                    <span>6 MIN READ</span>
-                    <span>•</span>
-                    <span>AUG 2026</span>
-                  </div>
-
+                <div class="article-meta">
+                  <span>6 MIN READ</span>
+                  <span>•</span>
+                  <span>AUG 2026</span>
                 </div>
 
-              </article>
+              </div>
+
+            </article>
 
 
-              <article class="article">
+            <article class="article">
 
-                <div class="article-image">
-                  💡
+              <div class="article-image">
+                💡
+              </div>
+
+              <div class="article-body">
+
+                <div class="article-tag">
+                  TIPS
                 </div>
 
-                <div class="article-body">
+                <h3>
+                  Simple Gaming Tips Worth Knowing
+                </h3>
 
-                  <div class="article-category">
-                    TIPS
-                  </div>
+                <p>
+                  Quick, practical ideas you can test
+                  during your next gaming session.
+                </p>
 
-                  <h3>
-                    Simple Gaming Tips Worth Knowing
-                  </h3>
-
-                  <p>
-                    Quick, practical ideas you can test
-                    during your next gaming session.
-                  </p>
-
-                  <div class="article-meta">
-                    <span>5 MIN READ</span>
-                    <span>•</span>
-                    <span>AUG 2026</span>
-                  </div>
-
+                <div class="article-meta">
+                  <span>5 MIN READ</span>
+                  <span>•</span>
+                  <span>AUG 2026</span>
                 </div>
 
-              </article>
+              </div>
 
-            </div>
+            </article>
+
 
           </div>
 
@@ -1469,7 +1534,7 @@
 
             <div class="sidebar-box">
 
-              <div class="sidebar-title">
+              <div class="sidebar-heading">
                 MOST READ
               </div>
 
@@ -1508,7 +1573,7 @@
                   </h4>
 
                   <span>
-                    Setup
+                    Setup guide
                   </span>
 
                 </div>
@@ -1550,7 +1615,7 @@
                   </h4>
 
                   <span>
-                    Guide
+                    Beginner
                   </span>
 
                 </div>
@@ -1562,48 +1627,16 @@
 
             <!-- SIDEBAR AD -->
 
-            <div class="ad-slot" style="min-height:300px;">
+            <div
+              class="ad-slot"
+              style="min-height:300px;">
+
               <span class="ad-label">
                 SIDEBAR
               </span>
-            </div>
-
-
-            <div class="sidebar-box">
-
-              <div class="sidebar-title">
-                TRENDING
-              </div>
-
-              <div class="popular">
-
-                <div class="popular-number">
-                  #
-                </div>
-
-                <div>
-                  <h4>
-                    Gaming performance tips
-                  </h4>
-                </div>
-
-              </div>
-
-              <div class="popular">
-
-                <div class="popular-number">
-                  #
-                </div>
-
-                <div>
-                  <h4>
-                    New game updates
-                  </h4>
-                </div>
-
-              </div>
 
             </div>
+
 
           </aside>
 
@@ -1614,14 +1647,18 @@
     </section>
 
 
-    <!-- MID PAGE AD -->
+    <!-- MID AD -->
 
     <div class="container">
 
-      <div class="ad-slot" style="min-height:160px;">
+      <div
+        class="ad-slot"
+        style="min-height:150px;">
+
         <span class="ad-label">
           CONTENT
         </span>
+
       </div>
 
     </div>
@@ -1629,21 +1666,21 @@
 
     <!-- GUIDES -->
 
-    <section class="section" id="guides">
+    <section id="guides">
 
       <div class="container">
 
-        <div class="section-heading">
+        <div style="margin-bottom:20px;">
 
           <div class="section-kicker">
             GUIDES
           </div>
 
-          <h2>
+          <h2 class="section-title">
             Guides worth bookmarking
           </h2>
 
-          <p>
+          <p class="section-description">
             Helpful content that answers real gaming questions.
           </p>
 
@@ -1653,7 +1690,7 @@
         <div class="trending">
 
 
-          <a href="#" class="trend-card">
+          <a href="#" class="trend">
 
             <small>
               BEGINNER
@@ -1666,7 +1703,7 @@
           </a>
 
 
-          <a href="#" class="trend-card">
+          <a href="#" class="trend">
 
             <small>
               PERFORMANCE
@@ -1679,7 +1716,7 @@
           </a>
 
 
-          <a href="#" class="trend-card">
+          <a href="#" class="trend">
 
             <small>
               SKILLS
@@ -1704,9 +1741,11 @@
     <div class="container">
 
       <div class="ad-slot">
+
         <span class="ad-label">
-          GUIDE BREAK
+          GUIDE
         </span>
+
       </div>
 
     </div>
@@ -1714,17 +1753,17 @@
 
     <!-- FEATURE -->
 
-    <section class="section" id="reviews">
+    <section id="reviews">
 
       <div class="container">
 
-        <div class="section-heading">
+        <div style="margin-bottom:20px;">
 
           <div class="section-kicker">
             EDITOR'S PICK
           </div>
 
-          <h2>
+          <h2 class="section-title">
             Featured story
           </h2>
 
@@ -1733,14 +1772,14 @@
 
         <article class="feature">
 
-          <div class="feature-visual">
+          <div class="feature-image">
             🎮
           </div>
 
           <div class="feature-content">
 
-            <div class="article-category">
-              OXINOB EDITORIAL
+            <div class="article-tag">
+              OXCINOB EDITORIAL
             </div>
 
             <h2>
@@ -1757,8 +1796,10 @@
             <a
               href="#guides"
               class="button button-primary"
-              style="width:max-content;margin-top:18px;">
+              style="margin-top:18px;width:max-content;">
+
               READ FEATURE →
+
             </a>
 
           </div>
@@ -1774,10 +1815,14 @@
 
     <div class="container">
 
-      <div class="ad-slot" style="min-height:160px;">
+      <div
+        class="ad-slot"
+        style="min-height:150px;">
+
         <span class="ad-label">
           FEATURE
         </span>
+
       </div>
 
     </div>
@@ -1785,17 +1830,17 @@
 
     <!-- TIPS -->
 
-    <section class="section" id="tips">
+    <section id="tips">
 
       <div class="container">
 
-        <div class="section-heading">
+        <div style="margin-bottom:20px;">
 
           <div class="section-kicker">
             TIPS & TRICKS
           </div>
 
-          <h2>
+          <h2 class="section-title">
             Quick tips for players
           </h2>
 
@@ -1805,7 +1850,7 @@
         <div class="category-grid">
 
 
-          <a href="#" class="category-card">
+          <a href="#" class="category">
 
             <strong>
               TIP 01
@@ -1822,7 +1867,7 @@
           </a>
 
 
-          <a href="#" class="category-card">
+          <a href="#" class="category">
 
             <strong>
               TIP 02
@@ -1839,7 +1884,7 @@
           </a>
 
 
-          <a href="#" class="category-card">
+          <a href="#" class="category">
 
             <strong>
               TIP 03
@@ -1850,13 +1895,13 @@
             </h3>
 
             <p>
-              Keep your setup comfortable and focused.
+              Keep your setup comfortable.
             </p>
 
           </a>
 
 
-          <a href="#" class="category-card">
+          <a href="#" class="category">
 
             <strong>
               TIP 04
@@ -1867,7 +1912,7 @@
             </h3>
 
             <p>
-              Understand what changes actually matter.
+              Understand changes that matter.
             </p>
 
           </a>
@@ -1880,19 +1925,34 @@
     </section>
 
 
-    <!-- CATEGORY SECTION -->
+    <!-- TIPS AD -->
 
-    <section class="section" id="categories">
+    <div class="container">
+
+      <div class="ad-slot">
+
+        <span class="ad-label">
+          LOWER CONTENT
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- CATEGORIES -->
+
+    <section id="categories">
 
       <div class="container">
 
-        <div class="section-heading">
+        <div style="margin-bottom:20px;">
 
           <div class="section-kicker">
             EXPLORE
           </div>
 
-          <h2>
+          <h2 class="section-title">
             Browse categories
           </h2>
 
@@ -1901,29 +1961,34 @@
 
         <div class="category-grid">
 
-          <a href="#" class="category-card">
+
+          <a href="#" class="category">
             <strong>01</strong>
             <h3>Gaming News</h3>
             <p>Latest gaming developments.</p>
           </a>
 
-          <a href="#" class="category-card">
+
+          <a href="#" class="category">
             <strong>02</strong>
             <h3>Game Guides</h3>
             <p>Useful walkthroughs and guides.</p>
           </a>
 
-          <a href="#" class="category-card">
+
+          <a href="#" class="category">
             <strong>03</strong>
             <h3>Reviews</h3>
             <p>Gaming opinions and analysis.</p>
           </a>
 
-          <a href="#" class="category-card">
+
+          <a href="#" class="category">
             <strong>04</strong>
             <h3>Tips & Tricks</h3>
             <p>Quick practical advice.</p>
           </a>
+
 
         </div>
 
@@ -1937,9 +2002,11 @@
     <div class="container">
 
       <div class="ad-slot">
+
         <span class="ad-label">
           BOTTOM
         </span>
+
       </div>
 
     </div>
@@ -1947,14 +2014,14 @@
 
     <!-- NEWSLETTER -->
 
-    <section class="section" id="newsletter">
+    <section id="newsletter">
 
       <div class="container">
 
         <div class="newsletter">
 
           <div class="section-kicker">
-            OXINOB NEWSLETTER
+            OXCINOB NEWSLETTER
           </div>
 
           <h2>
@@ -1993,11 +2060,9 @@
   </main>
 
 
-  <!-- ===================================================
-       FOOTER
-  ==================================================== -->
+  <!-- FOOTER -->
 
-  <footer class="footer">
+  <footer>
 
     <div class="container footer-grid">
 
@@ -2005,11 +2070,11 @@
       <div>
 
         <div class="logo">
-          OXI<span>NOB</span>
+          OXCINOB
         </div>
 
         <p style="margin-top:12px;max-width:350px;">
-          OXINOB is a gaming publication focused on useful
+          OXCINOB is a gaming publication focused on useful
           guides, news, tips, reviews and original content.
         </p>
 
@@ -2061,28 +2126,30 @@
     </div>
 
 
-    <div class="container footer-bottom">
+    <div class="container copyright">
 
-      © 2026 OXINOB. All rights reserved.
+      © 2026 OXCINOB. All rights reserved.
 
     </div>
 
   </footer>
 
 
+  <!-- JAVASCRIPT -->
+
   <script>
 
     function toggleMobileMenu() {
 
       const menu =
-        document.getElementById("mobileNav");
+        document.getElementById("mobileMenu");
 
       menu.classList.toggle("active");
 
     }
 
 
-    function toggleSearch() {
+    function searchSite() {
 
       const query =
         prompt("What would you like to search?");
@@ -2090,7 +2157,7 @@
       if (query && query.trim()) {
 
         alert(
-          "Search feature will be connected to the article database next."
+          "Search will be connected to the article database next."
         );
 
       }
@@ -2103,13 +2170,12 @@
       event.preventDefault();
 
       alert(
-        "Thanks for subscribing to OXINOB!"
+        "Thanks for subscribing to OXCINOB!"
       );
 
       event.target.reset();
 
     }
-
 
   </script>
 
