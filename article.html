@@ -2,53 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>How to Build Better Gaming Habits | OXCINOB</title>
 
   <meta
     name="description"
-    content="Practical gaming habits that can help you improve focus, consistency and your overall gaming experience."
+    content="Learn practical gaming habits that can improve focus, consistency, comfort and overall gaming performance."
   >
 
-  <meta
-    name="robots"
-    content="index, follow"
-  >
-
-  <meta
-    name="theme-color"
-    content="#07090f"
-  >
+  <meta name="robots" content="index, follow">
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       background: #07090f;
       color: #f5f7fb;
-
-      font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
+      font-family: Arial, Helvetica, sans-serif;
       line-height: 1.7;
     }
 
@@ -62,23 +37,17 @@
       margin: auto;
     }
 
-    /* HEADER */
-
     header {
       position: sticky;
       top: 0;
-      z-index: 100;
-
+      z-index: 10;
       background: rgba(7,9,15,.94);
-      backdrop-filter: blur(18px);
-
-      border-bottom: 1px solid
-        rgba(255,255,255,.08);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
     .nav {
-      min-height: 68px;
-
+      min-height: 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -87,7 +56,6 @@
     .logo {
       font-size: 25px;
       font-weight: 950;
-      letter-spacing: -1.5px;
     }
 
     .logo span {
@@ -95,41 +63,24 @@
     }
 
     .back {
-      padding: 9px 13px;
-
-      border: 1px solid
-        rgba(255,255,255,.1);
-
+      padding: 9px 14px;
+      border: 1px solid rgba(255,255,255,.1);
       border-radius: 9px;
-
       background: #101620;
-
-      color: #b5bfce;
-
+      color: #c4ccd8;
       font-size: 10px;
       font-weight: 800;
     }
 
-    /* AD */
-
     .ad {
       min-height: 90px;
-
       margin: 20px 0;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
-      position: relative;
-
-      border: 1px dashed
-        rgba(255,255,255,.13);
-
+      border: 1px dashed rgba(255,255,255,.13);
       border-radius: 10px;
-
       color: #505b6c;
-
       font-size: 9px;
       letter-spacing: 1px;
     }
@@ -138,151 +89,108 @@
       content: "ADVERTISEMENT";
     }
 
-    /* ARTICLE */
-
     article {
       padding: 25px 0 50px;
     }
 
     .category {
       color: #18d9ff;
-
       font-size: 9px;
       font-weight: 900;
-
       letter-spacing: 1.5px;
-
       text-transform: uppercase;
     }
 
     h1 {
       margin-top: 10px;
-
-      font-size:
-        clamp(35px, 8vw, 62px);
-
+      font-size: clamp(36px, 8vw, 62px);
       line-height: 1.02;
-
       letter-spacing: -2.5px;
     }
 
     .intro {
       margin-top: 18px;
-
       color: #aab4c3;
-
       font-size: 16px;
     }
 
     .meta {
       display: flex;
       flex-wrap: wrap;
-
       gap: 10px;
-
       margin-top: 17px;
-
       color: #687487;
-
       font-size: 9px;
       font-weight: 800;
     }
 
-    .hero-image {
-      min-height: 360px;
-
+    .hero {
+      min-height: 350px;
       margin: 30px 0;
-
       display: grid;
       place-items: center;
-
       border-radius: 15px;
-
-      border: 1px solid
-        rgba(255,255,255,.08);
-
+      border: 1px solid rgba(255,255,255,.08);
       background:
         linear-gradient(
           135deg,
-          rgba(120,97,255,.4),
-          rgba(24,217,255,.06)
+          rgba(120,97,255,.42),
+          rgba(24,217,255,.08)
         ),
         #111927;
-
       font-size: 90px;
     }
 
-    .article-content {
+    .content {
       color: #c2cad6;
-
       font-size: 15px;
     }
 
-    .article-content h2 {
-      margin: 35px 0 10px;
-
+    .content h2 {
+      margin: 38px 0 10px;
       color: white;
-
-      font-size: 27px;
-
+      font-size: 28px;
       line-height: 1.2;
     }
 
-    .article-content h3 {
-      margin: 27px 0 8px;
-
+    .content h3 {
+      margin: 25px 0 8px;
       color: white;
-
       font-size: 20px;
     }
 
-    .article-content p {
-      margin: 13px 0;
+    .content p {
+      margin: 14px 0;
     }
 
-    .article-content ul {
+    .content ul {
       margin: 15px 0;
       padding-left: 22px;
     }
 
-    .article-content li {
+    .content li {
       margin: 7px 0;
     }
 
     .highlight {
       margin: 25px 0;
-
       padding: 20px;
-
       border-left: 3px solid #18d9ff;
-
       border-radius: 8px;
-
       background: #101721;
-
-      color: #dbe2ec;
+      color: #dce3ed;
     }
-
-    /* IN ARTICLE AD */
 
     .article-ad {
       min-height: 160px;
-
-      margin: 30px 0;
-
+      margin: 32px 0;
       display: flex;
       align-items: center;
       justify-content: center;
-
-      border: 1px dashed
-        rgba(255,255,255,.13);
-
+      border: 1px dashed rgba(255,255,255,.13);
       border-radius: 10px;
-
       color: #505b6c;
-
       font-size: 9px;
-
       letter-spacing: 1px;
     }
 
@@ -290,492 +198,371 @@
       content: "ADVERTISEMENT";
     }
 
-    /* RELATED */
-
     .related {
       margin-top: 45px;
       padding-top: 30px;
-
-      border-top: 1px solid
-        rgba(255,255,255,.08);
+      border-top: 1px solid rgba(255,255,255,.08);
     }
 
     .related h2 {
       margin-bottom: 15px;
-
       font-size: 25px;
     }
 
     .related-grid {
       display: grid;
       grid-template-columns: 1fr;
-
       gap: 12px;
     }
 
     .related-card {
       padding: 17px;
-
-      border: 1px solid
-        rgba(255,255,255,.08);
-
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 11px;
-
       background: #0d121b;
     }
 
     .related-card small {
       color: #18d9ff;
-
       font-size: 8px;
       font-weight: 900;
     }
 
     .related-card h3 {
       margin-top: 6px;
-
       font-size: 15px;
     }
 
-    /* FOOTER */
-
     footer {
-      margin-top: 35px;
-
       padding: 35px 0 20px;
-
-      border-top: 1px solid
-        rgba(255,255,255,.08);
-
+      border-top: 1px solid rgba(255,255,255,.08);
       background: #06080d;
-
       text-align: center;
     }
 
     footer p {
       color: #667386;
-
       font-size: 9px;
     }
 
     @media (min-width: 650px) {
-
       .related-grid {
-        grid-template-columns:
-          repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
 
-      .hero-image {
+      .hero {
         min-height: 430px;
       }
-
     }
-
   </style>
 </head>
 
 <body>
 
+<header>
+  <div class="container nav">
 
-  <!-- HEADER -->
+    <a href="index.html" class="logo">
+      OXCIN<span>OB</span>
+    </a>
 
-  <header>
+    <a href="index.html" class="back">
+      ← BACK TO OXCINOB
+    </a>
 
-    <div class="container nav">
-
-      <a href="index.html" class="logo">
-        OXCINOB
-      </a>
-
-      <a
-        href="index.html"
-        class="back">
-        ← BACK TO HOME
-      </a>
-
-    </div>
-
-  </header>
+  </div>
+</header>
 
 
-  <main>
+<main>
+
+  <div class="container">
+    <div class="ad"></div>
+  </div>
 
 
-    <!-- TOP AD -->
+  <article>
 
     <div class="container">
+
+      <div class="category">
+        GAMING GUIDE
+      </div>
+
+      <h1>
+        How to Build Better Gaming Habits
+      </h1>
+
+      <p class="intro">
+        Better gaming is not always about playing more.
+        The right habits can help you stay focused,
+        improve your skills and enjoy your sessions more.
+      </p>
+
+      <div class="meta">
+        <span>OXCINOB EDITORIAL</span>
+        <span>•</span>
+        <span>6 MIN READ</span>
+        <span>•</span>
+        <span>AUGUST 2026</span>
+      </div>
+
+
+      <div class="hero">
+        🎮
+      </div>
+
+
+      <div class="content">
+
+        <p>
+          Gaming has changed a lot over the years. Modern games
+          can be competitive, challenging and incredibly immersive.
+          But improving as a player does not simply mean spending
+          more hours in front of a screen.
+        </p>
+
+        <p>
+          A better approach is to build simple habits that make
+          every gaming session more focused and productive.
+        </p>
+
+
+        <div class="highlight">
+          <strong>OXCINOB Quick Take:</strong>
+          Play with a purpose, practice consistently,
+          take breaks and learn from your mistakes.
+        </div>
+
+
+        <h2>
+          1. Start Every Session With a Goal
+        </h2>
+
+        <p>
+          Before you start playing, decide what you want from
+          the session. Your goal could be improving your aim,
+          learning a new mechanic, completing a mission or
+          simply relaxing.
+        </p>
+
+        <p>
+          A clear goal makes your time more meaningful and helps
+          you recognize improvement.
+        </p>
+
+
+        <h2>
+          2. Focus on One Skill at a Time
+        </h2>
+
+        <p>
+          Trying to improve everything at once can make progress
+          difficult to measure.
+        </p>
+
+        <p>
+          Instead, choose one area and work on it consistently.
+          You could focus on movement, aiming, positioning,
+          decision-making or game knowledge.
+        </p>
+
+
+        <div class="article-ad"></div>
+
+
+        <h2>
+          3. Take Regular Breaks
+        </h2>
+
+        <p>
+          Long gaming sessions can eventually reduce your
+          concentration. When you become tired or frustrated,
+          your decisions may also become less consistent.
+        </p>
+
+        <ul>
+          <li>Take short breaks during longer sessions.</li>
+          <li>Stretch and move around occasionally.</li>
+          <li>Keep your gaming area comfortable.</li>
+          <li>Do not continue playing purely because of frustration.</li>
+        </ul>
+
+
+        <h2>
+          4. Learn From Your Mistakes
+        </h2>
+
+        <p>
+          Losing a match does not necessarily mean the session
+          was wasted. Mistakes can show you exactly what needs
+          improvement.
+        </p>
+
+        <h3>
+          Ask yourself these three questions:
+        </h3>
+
+        <ul>
+          <li>What happened?</li>
+          <li>Why did it happen?</li>
+          <li>What can I do differently next time?</li>
+        </ul>
+
+
+        <h2>
+          5. Keep Your Gaming Setup Comfortable
+        </h2>
+
+        <p>
+          Your environment can affect how enjoyable and
+          sustainable your gaming sessions feel.
+        </p>
+
+        <p>
+          You do not need the most expensive equipment.
+          A comfortable chair, sensible monitor position,
+          organized desk and good lighting can already make
+          a noticeable difference.
+        </p>
+
+
+        <div class="article-ad"></div>
+
+
+        <h2>
+          6. Avoid Changing Everything at Once
+        </h2>
+
+        <p>
+          When players want to improve, they sometimes change
+          sensitivity, controls, settings and equipment all at
+          the same time.
+        </p>
+
+        <p>
+          That makes it difficult to know which change actually
+          helped.
+        </p>
+
+        <div class="highlight">
+          <strong>Pro Tip:</strong>
+          Change one thing, test it properly, and only then
+          decide whether you want to keep it.
+        </div>
+
+
+        <h2>
+          7. Make Consistency Your Advantage
+        </h2>
+
+        <p>
+          Improvement usually comes from repeated practice rather
+          than one extremely long session.
+        </p>
+
+        <p>
+          A shorter session where you stay focused can be more
+          useful than hours of unfocused gameplay.
+        </p>
+
+
+        <h2>
+          Final Thoughts
+        </h2>
+
+        <p>
+          Building better gaming habits does not require a
+          complicated routine.
+        </p>
+
+        <p>
+          Start with a clear goal, focus on one skill, take
+          breaks, learn from mistakes and keep your setup
+          comfortable.
+        </p>
+
+        <p>
+          Small improvements repeated consistently can eventually
+          make a much bigger difference than trying to change
+          everything overnight.
+        </p>
+
+
+      </div>
+
+
+      <div class="related">
+
+        <h2>
+          More From OXCINOB
+        </h2>
+
+        <div class="related-grid">
+
+          <a
+            href="article.html"
+            class="related-card">
+
+            <small>GUIDES</small>
+
+            <h3>
+              Improve Your Aim Without Guesswork
+            </h3>
+
+          </a>
+
+
+          <a
+            href="article.html"
+            class="related-card">
+
+            <small>PERFORMANCE</small>
+
+            <h3>
+              Make Your Gaming Setup More Efficient
+            </h3>
+
+          </a>
+
+
+          <a
+            href="article.html"
+            class="related-card">
+
+            <small>TIPS</small>
+
+            <h3>
+              Simple Gaming Tips Worth Knowing
+            </h3>
+
+          </a>
+
+        </div>
+
+      </div>
+
 
       <div class="ad"></div>
 
     </div>
 
+  </article>
 
-    <!-- ARTICLE -->
+</main>
 
-    <article>
 
-      <div class="container">
+<footer>
 
+  <div class="container">
 
-        <div class="category">
-          GAMING
-        </div>
+    <p>
+      © 2026 OXCINOB. All rights reserved.
+    </p>
 
+  </div>
 
-        <h1>
-          How to Build Better Gaming Habits
-        </h1>
-
-
-        <p class="intro">
-          Practical habits that can help you stay focused,
-          improve consistency and get more enjoyment from
-          your gaming sessions.
-        </p>
-
-
-        <div class="meta">
-
-          <span>
-            OXCINOB EDITORIAL
-          </span>
-
-          <span>•</span>
-
-          <span>
-            6 MIN READ
-          </span>
-
-          <span>•</span>
-
-          <span>
-            AUGUST 2026
-          </span>
-
-        </div>
-
-
-        <!-- HERO IMAGE -->
-
-        <div class="hero-image">
-          🎮
-        </div>
-
-
-        <!-- ARTICLE CONTENT -->
-
-        <div class="article-content">
-
-
-          <p>
-            Gaming can be more enjoyable when you have a
-            simple routine that helps you stay comfortable,
-            focused and consistent.
-          </p>
-
-
-          <p>
-            You do not need an expensive setup or complicated
-            system. A few small changes can make a surprisingly
-            big difference.
-          </p>
-
-
-          <div class="highlight">
-
-            <strong>
-              Quick takeaway:
-            </strong>
-
-            Focus on consistency, comfort and deliberate
-            practice instead of simply spending more hours
-            playing.
-
-          </div>
-
-
-          <h2>
-            1. Start With a Clear Goal
-          </h2>
-
-
-          <p>
-            Before starting a session, decide what you actually
-            want to accomplish. Maybe you want to practice aim,
-            finish a mission, learn a new mechanic or simply
-            relax.
-          </p>
-
-
-          <p>
-            Having a simple goal prevents a gaming session from
-            becoming unfocused and makes it easier to recognize
-            progress.
-          </p>
-
-
-          <!-- IN ARTICLE AD -->
-
-          <div class="article-ad"></div>
-
-
-          <h2>
-            2. Improve One Skill at a Time
-          </h2>
-
-
-          <p>
-            Trying to improve everything simultaneously can make
-            progress difficult to measure.
-          </p>
-
-
-          <p>
-            Instead, choose one specific area and work on it.
-            For example, you could focus on movement, aiming,
-            positioning, game knowledge or decision-making.
-          </p>
-
-
-          <h3>
-            Why this works
-          </h3>
-
-
-          <p>
-            A focused practice session gives you clearer
-            feedback. You can identify what is working and
-            adjust your approach instead of changing everything
-            at once.
-          </p>
-
-
-          <h2>
-            3. Take Short Breaks
-          </h2>
-
-
-          <p>
-            Long sessions can make concentration drop,
-            especially when you keep playing after becoming
-            tired or frustrated.
-          </p>
-
-
-          <p>
-            Short breaks give you an opportunity to reset,
-            stretch and return with a clearer head.
-          </p>
-
-
-          <ul>
-
-            <li>
-              Take a short break between long sessions.
-            </li>
-
-            <li>
-              Stay comfortable at your desk.
-            </li>
-
-            <li>
-              Avoid playing through extreme frustration.
-            </li>
-
-            <li>
-              Keep your setup organized.
-            </li>
-
-          </ul>
-
-
-          <!-- SECOND AD -->
-
-          <div class="article-ad"></div>
-
-
-          <h2>
-            4. Review Your Mistakes
-          </h2>
-
-
-          <p>
-            One of the fastest ways to learn is to understand
-            what went wrong.
-          </p>
-
-
-          <p>
-            Instead of simply saying that you lost because of
-            bad luck, look at the decision that happened just
-            before the mistake.
-          </p>
-
-
-          <h3>
-            Ask yourself three questions
-          </h3>
-
-
-          <ul>
-
-            <li>
-              What happened?
-            </li>
-
-            <li>
-              Why did it happen?
-            </li>
-
-            <li>
-              What could I do differently next time?
-            </li>
-
-          </ul>
-
-
-          <h2>
-            5. Keep Your Setup Comfortable
-          </h2>
-
-
-          <p>
-            Your environment matters more than many players
-            realize. A comfortable chair, sensible monitor
-            position and organized desk can make longer sessions
-            much easier.
-          </p>
-
-
-          <p>
-            You do not need the most expensive equipment.
-            Consistency and comfort are usually more important
-            than chasing every new accessory.
-          </p>
-
-
-          <div class="highlight">
-
-            <strong>
-              OXCINOB Tip:
-            </strong>
-
-            Change one thing at a time and test whether it
-            actually improves your experience.
-
-          </div>
-
-
-          <h2>
-            Final Thoughts
-          </h2>
-
-
-          <p>
-            Better gaming does not necessarily mean playing
-            more. A smarter approach is to focus on deliberate
-            practice, useful feedback and a comfortable setup.
-          </p>
-
-
-          <p>
-            Start with one small change, keep it consistent,
-            and then build from there.
-          </p>
-
-
-        </div>
-
-
-        <!-- RELATED ARTICLES -->
-
-        <div class="related">
-
-          <h2>
-            You May Also Like
-          </h2>
-
-
-          <div class="related-grid">
-
-
-            <a
-              href="article.html"
-              class="related-card">
-
-              <small>
-                GUIDES
-              </small>
-
-              <h3>
-                Improve Your Aim Without Guesswork
-              </h3>
-
-            </a>
-
-
-            <a
-              href="article.html"
-              class="related-card">
-
-              <small>
-                PERFORMANCE
-              </small>
-
-              <h3>
-                Make Your Gaming Setup More Efficient
-              </h3>
-
-            </a>
-
-
-            <a
-              href="article.html"
-              class="related-card">
-
-              <small>
-                TIPS
-              </small>
-
-              <h3>
-                Simple Gaming Tips Worth Knowing
-              </h3>
-
-            </a>
-
-
-          </div>
-
-        </div>
-
-
-        <!-- BOTTOM AD -->
-
-        <div class="ad" style="margin-top:35px;">
-        </div>
-
-
-      </div>
-
-    </article>
-
-  </main>
-
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="container">
-
-      <p>
-        © 2026 OXCINOB. All rights reserved.
-      </p>
-
-    </div>
-
-  </footer>
-
+</footer>
 
 </body>
 </html>
