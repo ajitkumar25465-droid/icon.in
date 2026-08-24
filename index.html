@@ -253,43 +253,75 @@
       content: "ADVERTISEMENT";
     }
 
-    /* RESPONSIVE BANNER ADS */
-    .ad-728 { display: flex; }
-    .ad-320 { display: none; }
-
-    @media (max-width: 649px) {
-      .ad-728 { display: none; }
-      .ad-320 { display: flex; min-height: 50px; }
-    }
-
-    .ad-300 {
-      min-height: 250px;
-    }
-
-
-    .ad-slot.ad-300 {
-      min-height: 250px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    @media (max-width: 649px) {
-      .ad-slot.ad-300 {
-        width: 100%;
-        max-width: 300px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-
     .ad-label {
       position: absolute;
       right: 8px;
       top: 5px;
       color: #3c4655;
       font-size: 7px;
+    }
+
+    /* FINAL RESPONSIVE AD LAYOUT */
+    .ad-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      overflow: hidden;
+      margin: 18px auto;
+    }
+    .ad-728-wrap { min-height: 90px; max-width: 728px; }
+    .ad-468-wrap { min-height: 60px; max-width: 468px; }
+    .ad-320-wrap { min-height: 50px; max-width: 320px; }
+    .ad-300-wrap { min-height: 250px; max-width: 300px; }
+    .ad-160x300-wrap { min-height: 300px; max-width: 160px; }
+    .ad-160x600-wrap { min-height: 600px; max-width: 160px; }
+
+    .desktop-only-ad { display: flex; }
+    .mobile-only-ad { display: none; }
+
+    @media (max-width: 649px) {
+      .desktop-only-ad { display: none !important; }
+      .mobile-only-ad { display: flex !important; }
+
+      .ad-wrap {
+        width: 100%;
+        margin: 14px auto;
+      }
+
+      .ad-300-wrap {
+        width: 300px;
+        max-width: calc(100vw - 24px);
+        min-height: 250px;
+      }
+
+      .ad-320-wrap {
+        width: 320px;
+        max-width: calc(100vw - 24px);
+        min-height: 50px;
+      }
+
+      .ad-160x300-wrap,
+      .ad-160x600-wrap,
+      .ad-468-wrap,
+      .ad-728-wrap {
+        display: none !important;
+      }
+
+      .smartlink-cta {
+        margin-bottom: 12px !important;
+      }
+    }
+
+
+    /* HOMEPAGE AD GUARD */
+    @media (max-width: 649px) {
+      .ad-wrap iframe {
+        max-width: 100%;
+      }
+      body {
+        overflow-x: hidden;
+      }
     }
 
     /* HERO */
@@ -986,34 +1018,53 @@
   </div>
 
 
+    <!-- HOMEPAGE TOP BANNER -->
+    <div class="container">
+      <div class="ad-wrap ad-728-wrap desktop-only-ad">
+        <script>
+          atOptions = {
+            'key' : '89e91ca0e28943575fe5820f7c22ce45',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highrevenueformat.com/89e91ca0e28943575fe5820f7c22ce45/invoke.js"></script>
+      </div>
+      <div class="ad-wrap ad-320-wrap mobile-only-ad">
+        <script>
+          atOptions = {
+            'key' : '693003eb2f6568f610482b6111bfea2b',
+            'format' : 'iframe',
+            'height' : 50,
+            'width' : 320,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highrevenueformat.com/693003eb2f6568f610482b6111bfea2b/invoke.js"></script>
+      </div>
+    </div>
+
   <main>
 
     <!-- TOP AD -->
+
     <div class="container">
-      <div class="ad-slot ad-728">
-        <script>
-  atOptions = {
-    'key' : '89e91ca0e28943575fe5820f7c22ce45',
-    'format' : 'iframe',
-    'height' : 90,
-    'width' : 728,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highrevenueformat.com/89e91ca0e28943575fe5820f7c22ce45/invoke.js"></script>
-      </div>
-      <div class="ad-slot ad-320">
-        <script>
-  atOptions = {
-    'key' : '693003eb2f6568f610482b6111bfea2b',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highrevenueformat.com/693003eb2f6568f610482b6111bfea2b/invoke.js"></script>
-      </div>
+
+     <div class="ad-slot">
+  <script>
+    atOptions = {
+      'key' : '89e91ca0e28943575fe5820f7c22ce45',
+      'format' : 'iframe',
+      'height' : 90,
+      'width' : 728,
+      'params' : {}
+    };
+  </script>
+  <script src="https://www.highrevenueformat.com/89e91ca0e28943575fe5820f7c22ce45/invoke.js"></script>
+</div>
+
     </div>
 
 
@@ -1099,19 +1150,21 @@
       </div>
 
     </section>
-    <!-- TOP AD -->
-<div class="ad-slot">
-  <script>
-    atOptions = {
-      'key' : '89e91ca0e28943575fe5820f7c22ce45',
-      'format' : 'iframe',
-      'height' : 90,
-      'width' : 728,
-      'params' : {}
-    };
-  </script>
-  <script src="https://www.highrevenueformat.com/89e91ca0e28943575fe5820f7c22ce45/invoke.js"></script>
-</div>
+    <!-- HOMEPAGE HERO-FOLLOWING AD -->
+    <div class="container">
+      <div class="ad-wrap ad-300-wrap">
+        <script>
+          atOptions = {
+            'key' : '11c515ae0bce3eb572354d9ae24f262d',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highrevenueformat.com/11c515ae0bce3eb572354d9ae24f262d/invoke.js"></script>
+      </div>
+    </div>
 
 
     <!-- HERO AD -->
@@ -1230,17 +1283,9 @@
             </article>
 
 
-            <div class="native-ad ad-300">
-  <script>
-  atOptions = {
-    'key' : '11c515ae0bce3eb572354d9ae24f262d',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highrevenueformat.com/11c515ae0bce3eb572354d9ae24f262d/invoke.js"></script>
+            <div class="ad-wrap ad-300-wrap">
+<script async="async" data-cfasync="false" src="https://pl31006516.profitableratecpmnetwork.com/0f98c59cae2c16204ca3b0e9de8fe0cf/invoke.js"></script>
+<div id="container-0f98c59cae2c16204ca3b0e9de8fe0cf"></div>
 </div>
 
 
@@ -1312,17 +1357,9 @@
             </article>
 
 
-            <div class="ad-slot ad-300" style="min-height:250px;">
-  <script>
-  atOptions = {
-    'key' : '11c515ae0bce3eb572354d9ae24f262d',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highrevenueformat.com/11c515ae0bce3eb572354d9ae24f262d/invoke.js"></script>
+            <div class="ad-wrap ad-300-wrap">
+<script async="async" data-cfasync="false" src="https://pl31006516.profitableratecpmnetwork.com/0f98c59cae2c16204ca3b0e9de8fe0cf/invoke.js"></script>
+<div id="container-0f98c59cae2c16204ca3b0e9de8fe0cf"></div>
 </div>
 
 
@@ -1397,9 +1434,35 @@
           </div>
 
 
+<div class="ad-wrap ad-468-wrap desktop-only-ad">
+<script>
+  atOptions = {
+    'key' : '43dde70e284b3293a993af8e558caa7f',
+    'format' : 'iframe',
+    'height' : 60,
+    'width' : 468,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/43dde70e284b3293a993af8e558caa7f/invoke.js"></script>
+</div>
+
           <!-- SIDEBAR -->
 
-          <aside class="sidebar">
+          <div class="ad-wrap ad-160x300-wrap desktop-only-ad">
+<script>
+  atOptions = {
+    'key' : '5afc660173022b23e5976e4408e4d569',
+    'format' : 'iframe',
+    'height' : 300,
+    'width' : 160,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/5afc660173022b23e5976e4408e4d569/invoke.js"></script>
+</div>
+
+<aside class="sidebar">
 
             <div class="sidebar-box">
 
@@ -1474,20 +1537,18 @@
             </div>
 
 
-            <div
-              class="ad-slot ad-300"
-              style="min-height:250px;">
-              <script>
+            <div class="ad-wrap ad-160x600-wrap desktop-only-ad">
+<script>
   atOptions = {
-    'key' : '11c515ae0bce3eb572354d9ae24f262d',
+    'key' : '65370b60129ee7e184088dfd2a947992',
     'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
+    'height' : 600,
+    'width' : 160,
     'params' : {}
   };
 </script>
-<script src="https://www.highrevenueformat.com/11c515ae0bce3eb572354d9ae24f262d/invoke.js"></script>
-            </div>
+<script src="https://www.highrevenueformat.com/65370b60129ee7e184088dfd2a947992/invoke.js"></script>
+</div>
 
           </aside>
 
@@ -1502,18 +1563,30 @@
 
     <div class="container">
 
-      <div class="ad-slot ad-300" style="min-height:250px;">
-        <script>
+      <div class="ad-wrap ad-728-wrap desktop-only-ad">
+<script>
   atOptions = {
-    'key' : '11c515ae0bce3eb572354d9ae24f262d',
+    'key' : '89e91ca0e28943575fe5820f7c22ce45',
     'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
+    'height' : 90,
+    'width' : 728,
     'params' : {}
   };
 </script>
-<script src="https://www.highrevenueformat.com/11c515ae0bce3eb572354d9ae24f262d/invoke.js"></script>
-      </div>
+<script src="https://www.highrevenueformat.com/89e91ca0e28943575fe5820f7c22ce45/invoke.js"></script>
+</div>
+<div class="ad-wrap ad-320-wrap mobile-only-ad">
+<script>
+  atOptions = {
+    'key' : '693003eb2f6568f610482b6111bfea2b',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/693003eb2f6568f610482b6111bfea2b/invoke.js"></script>
+</div>
 
     </div>
 
@@ -1598,8 +1671,8 @@
 
     <div class="container">
 
-      <div class="ad-slot ad-728">
-        <script>
+      <div class="ad-wrap ad-728-wrap desktop-only-ad">
+<script>
   atOptions = {
     'key' : '89e91ca0e28943575fe5820f7c22ce45',
     'format' : 'iframe',
@@ -1609,9 +1682,9 @@
   };
 </script>
 <script src="https://www.highrevenueformat.com/89e91ca0e28943575fe5820f7c22ce45/invoke.js"></script>
-      </div>
-      <div class="ad-slot ad-320">
-        <script>
+</div>
+<div class="ad-wrap ad-320-wrap mobile-only-ad">
+<script>
   atOptions = {
     'key' : '693003eb2f6568f610482b6111bfea2b',
     'format' : 'iframe',
@@ -1621,7 +1694,7 @@
   };
 </script>
 <script src="https://www.highrevenueformat.com/693003eb2f6568f610482b6111bfea2b/invoke.js"></script>
-      </div>
+</div>
 
     </div>
 
@@ -1689,18 +1762,30 @@
 
     <div class="container">
 
-      <div class="ad-slot ad-300" style="min-height:250px;">
-        <script>
+      <div class="ad-wrap ad-728-wrap desktop-only-ad">
+<script>
   atOptions = {
-    'key' : '11c515ae0bce3eb572354d9ae24f262d',
+    'key' : '89e91ca0e28943575fe5820f7c22ce45',
     'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
+    'height' : 90,
+    'width' : 728,
     'params' : {}
   };
 </script>
-<script src="https://www.highrevenueformat.com/11c515ae0bce3eb572354d9ae24f262d/invoke.js"></script>
-      </div>
+<script src="https://www.highrevenueformat.com/89e91ca0e28943575fe5820f7c22ce45/invoke.js"></script>
+</div>
+<div class="ad-wrap ad-320-wrap mobile-only-ad">
+<script>
+  atOptions = {
+    'key' : '693003eb2f6568f610482b6111bfea2b',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/693003eb2f6568f610482b6111bfea2b/invoke.js"></script>
+</div>
 
     </div>
 
@@ -1856,8 +1941,8 @@
 
     <div class="container">
 
-      <div class="ad-slot ad-728">
-        <script>
+      <div class="ad-wrap ad-728-wrap desktop-only-ad">
+<script>
   atOptions = {
     'key' : '89e91ca0e28943575fe5820f7c22ce45',
     'format' : 'iframe',
@@ -1867,9 +1952,9 @@
   };
 </script>
 <script src="https://www.highrevenueformat.com/89e91ca0e28943575fe5820f7c22ce45/invoke.js"></script>
-      </div>
-      <div class="ad-slot ad-320">
-        <script>
+</div>
+<div class="ad-wrap ad-320-wrap mobile-only-ad">
+<script>
   atOptions = {
     'key' : '693003eb2f6568f610482b6111bfea2b',
     'format' : 'iframe',
@@ -1879,7 +1964,7 @@
   };
 </script>
 <script src="https://www.highrevenueformat.com/693003eb2f6568f610482b6111bfea2b/invoke.js"></script>
-      </div>
+</div>
 
     </div>
 
@@ -1890,7 +1975,13 @@
 
       <div class="container">
 
-        <div class="newsletter">
+        <div class="smartlink-cta" style="margin:0 auto 18px;text-align:center;">
+      <a href="https://www.profitableratecpmnetwork.com/rh7qeaj6?key=5015247a4e5f40da07fb095adc0af2fc" target="_blank" rel="nofollow sponsored noopener"
+         style="display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:9px;background:var(--purple);color:#fff;font-size:10px;font-weight:900;">
+        SPONSORED LINK
+      </a>
+    </div>
+<div class="newsletter">
 
           <div class="section-kicker">
             OXCINOB NEWSLETTER
@@ -2005,6 +2096,11 @@
   <!-- IMPORTANT: MAIN JAVASCRIPT -->
 
   <script src="main.js"></script>
+
+
+  <!-- External ad-network scripts supplied by site owner -->
+  <script src="https://pl31006518.profitableratecpmnetwork.com/40/cd/ce/40cdcee25ae0804dcbe61419062743f7.js"></script>
+  <script src="https://pl31006522.profitableratecpmnetwork.com/5a/70/0b/5a700b33a4be791afedfbd840d4b5cc9.js"></script>
 
 </body>
 </html>
