@@ -1,12 +1,8 @@
-/* =========================================================
-   OXCINOB - MAIN JAVASCRIPT
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* -----------------------------
+  /* =========================
      MOBILE MENU
-  ----------------------------- */
+  ========================= */
 
   const mobileMenu =
     document.getElementById("mobileMenu");
@@ -15,53 +11,37 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".mobile-menu");
 
   if (menuButton && mobileMenu) {
-
     menuButton.addEventListener("click", function () {
-
       mobileMenu.classList.toggle("active");
-
     });
-
   }
 
 
-  /* -----------------------------
+  /* =========================
      CLOSE MOBILE MENU
-  ----------------------------- */
+  ========================= */
 
   if (mobileMenu) {
-
-    const mobileLinks =
-      mobileMenu.querySelectorAll("a");
-
-    mobileLinks.forEach(function (link) {
-
+    mobileMenu.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
-
         mobileMenu.classList.remove("active");
-
       });
-
     });
-
   }
 
 
-  /* -----------------------------
+  /* =========================
      SEARCH
-  ----------------------------- */
+  ========================= */
 
   const searchButtons =
-    document.querySelectorAll(
-      '[aria-label="Search"]'
-    );
+    document.querySelectorAll('[aria-label="Search"]');
 
   searchButtons.forEach(function (button) {
 
     button.addEventListener("click", function () {
 
-      const query =
-        prompt("Search OXCINOB:");
+      const query = prompt("Search OXCINOB:");
 
       if (!query || !query.trim()) {
         return;
@@ -80,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const text =
           article.innerText.toLowerCase();
 
-        if (text.includes(searchText)) {
+        if (!found && text.includes(searchText)) {
 
           article.scrollIntoView({
             behavior: "smooth",
@@ -91,23 +71,16 @@ document.addEventListener("DOMContentLoaded", function () {
             "2px solid #18d9ff";
 
           setTimeout(function () {
-
             article.style.outline = "";
-
           }, 2500);
 
           found = true;
-
         }
 
       });
 
       if (!found) {
-
-        alert(
-          "No matching article found yet."
-        );
-
+        alert("No matching article found yet.");
       }
 
     });
@@ -115,9 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* -----------------------------
-     ARTICLE CLICK
-  ----------------------------- */
+  /* =========================
+     ARTICLE CARDS
+     ========================= */
 
   const articles =
     document.querySelectorAll(".article");
@@ -128,69 +101,70 @@ document.addEventListener("DOMContentLoaded", function () {
 
     article.addEventListener("click", function () {
 
-      const titleElement =
-        article.querySelector("h3");
-
-      if (!titleElement) {
-        return;
-      }
-
-      const title =
-        titleElement.innerText.trim();
-
-      alert(
-        "Article: " +
-        title +
-        "\n\nThe full article page will be connected next."
-      );
+      window.location.href = "article.html";
 
     });
 
   });
 
 
-  /* -----------------------------
-     FEATURE / TRENDING CLICK
-  ----------------------------- */
+  /* =========================
+     FEATURE CARDS
+  ========================= */
 
-  const clickableCards =
-    document.querySelectorAll(
-      ".trend, .category"
-    );
+  document
+    .querySelectorAll(".trend")
+    .forEach(function (card) {
 
-  clickableCards.forEach(function (card) {
+      card.addEventListener("click", function (event) {
 
-    card.addEventListener("click", function (event) {
+        const href =
+          card.getAttribute("href");
 
-      const href =
-        card.getAttribute("href");
+        if (!href || href === "#") {
 
-      if (href === "#" || !href) {
+          event.preventDefault();
 
-        event.preventDefault();
-
-        const title =
-          card.querySelector("h3");
-
-        if (title) {
-
-          alert(
-            title.innerText.trim() +
-            "\n\nThis section will be connected to its article/category page next."
-          );
+          window.location.href =
+            "article.html";
 
         }
 
-      }
+      });
 
     });
 
-  });
+
+  /* =========================
+     CATEGORY CARDS
+  ========================= */
+
+  document
+    .querySelectorAll(".category")
+    .forEach(function (card) {
+
+      card.addEventListener("click", function (event) {
+
+        const href =
+          card.getAttribute("href");
+
+        if (!href || href === "#") {
+
+          event.preventDefault();
+
+          window.location.href =
+            "article.html";
+
+        }
+
+      });
+
+    });
 
 
-  /* -----------------------------
+  /* =========================
      NEWSLETTER
-  ----------------------------- */
+  ========================= */
 
   const newsletter =
     document.querySelector(".newsletter-form");
@@ -203,13 +177,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.preventDefault();
 
-        const email =
-          newsletter
-            .querySelector("input[type='email']")
-            .value
-            .trim();
+        const input =
+          newsletter.querySelector(
+            "input[type='email']"
+          );
 
-        if (!email) {
+        if (!input || !input.value.trim()) {
           return;
         }
 
@@ -225,9 +198,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* -----------------------------
+  /* =========================
      SMOOTH ANCHOR LINKS
-  ----------------------------- */
+  ========================= */
 
   document
     .querySelectorAll('a[href^="#"]')
@@ -267,9 +240,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-  /* -----------------------------
-     IMAGE LAZY LOADING
-  ----------------------------- */
+  /* =========================
+     LAZY LOAD IMAGES
+  ========================= */
 
   document
     .querySelectorAll("img")
@@ -280,12 +253,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-  /* -----------------------------
-     CONSOLE MESSAGE
-  ----------------------------- */
-
   console.log(
-    "OXCINOB website loaded successfully."
+    "OXCINOB main.js loaded successfully."
   );
 
 });
