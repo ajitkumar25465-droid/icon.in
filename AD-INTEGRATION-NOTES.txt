@@ -1,0 +1,18 @@
+OXCINOB — Adsterra integration
+================================
+This package includes all 10 Adsterra ad-unit codes supplied by the site owner:
+- 6 banner formats: 728x90, 300x250, 468x60, 160x300, 160x600, 320x50
+- Native Banner
+- Smartlink (user-click sponsored link; no automatic redirect)
+- Social Bar script
+- Popunder script
+
+The Social Bar and Popunder scripts are loaded site-wide on the HTML pages.
+Banner and Native placements are distributed across the home and main content pages.
+Smartlink is presented as a clearly-labelled sponsored link.
+
+Important:
+- Ad networks may take time to approve/serve ads after deployment.
+- Do not click your own ads or generate artificial traffic.
+- Check Adsterra's current publisher rules and frequency controls for Popunder/Social Bar.
+- If an ad unit does not serve, verify the code and domain status in the Adsterra dashboard.
